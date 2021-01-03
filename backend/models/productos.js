@@ -25,7 +25,7 @@ const traerTodos = async () => {
 
 //Obtener productos segun CATEGORIA
 const TraerPorCat = async (categoria) => {
-    const query = "SELECT p.id, c.nombreCategoria AS categoria, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ? AND c.nombre = ?"
+    const query = "SELECT p.id, c.nombreCategoria AS categoria, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ? AND c.nombreCategoria = ?"
     const params = [T_PRODUCTOS, T_CATEGORIAS, 1, categoria];
     return await pool.query(query, params);
 };
