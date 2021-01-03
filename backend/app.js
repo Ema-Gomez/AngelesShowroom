@@ -7,7 +7,6 @@ const dotenv = require("dotenv");
 const {usuarioToken} = require('./middlewares/auth');
 dotenv.config();
 
-const session = require("express-session");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const compraRouter = require('./routes/compra');
@@ -28,14 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-  session({
-    secret: process.env.SECRET_SESSION,
-    cookie: { maxAge: null },
-    resave: true,
-    saveUninitialized: false,
-  })
-);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
