@@ -10,6 +10,7 @@ const traerTodos = async (req, res) => {
         const productos = await model.traerTodos();
         res.json(productos);
     } catch (e) {
+        res.sendStatus(403);
         console.log(e);
     };
 };

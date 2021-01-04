@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { stringify } from '@angular/compiler/src/util';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url } from 'inspector';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,6 @@ export class BaseService {
 
   async get(url:string) {
     try{
-      baseUrl:string;
       return this.http.get(url).toPromise()
     } catch(e) {
     console.log(e);
@@ -22,6 +20,8 @@ export class BaseService {
   async post(url:string, obj:any){
     try{
       return this.http.post(url, obj).toPromise();
+    } catch (e) {
+      console.log(e);
     }
   }
 }
