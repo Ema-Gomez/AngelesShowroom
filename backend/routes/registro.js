@@ -31,6 +31,6 @@ const verificarEmail = async (req, res, next) => {
 };
 
 router.get('/', mostrar);
-router.post('/create', crear);
+router.post('/crear', crear);
 router.get('/verify/:uid', verificarEmail);
 module.exports = router;

@@ -4,8 +4,9 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosService extends BaseService {
-  async obtenerProductos(url:string) {
+export class AdminService extends BaseService{
+
+  async adminProductos(url:string) {
     return this.get(url)
   }
 }

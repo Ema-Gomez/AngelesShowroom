@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
+import { CookieService } from 'ngx-cookie-service';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +13,12 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { AdminComponent } from './components/admin/admin.component';
 
+export function tokenGetter() {
+  return localStorage.getItem("authorization")
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,14 +27,25 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
     ProductosComponent,
     LoginComponent,
     RegistroComponent,
-    MisDatosComponent
+    MisDatosComponent,
+    CategoriaComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+          allowedDomains: ['localhost:3000'],
+          disallowedRoutes: [""],
+          authScheme: ""
+      }
+    })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

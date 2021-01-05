@@ -11,16 +11,27 @@ const service = require("../../services/producto");
 const traerCategorias = async (req, res) => {
     try{
         const categorias = await traer();
-        res.render('productos', {categorias});
+        res.json(categorias);
     } catch(e) {
         console.log(e);
     }
 }
 
+const traerTodos = async (req, res) => {
+    try{
+        const productos = await model.traerTodos();
+        res.json(productos);
+        console.log(productos);
+    } catch (e) {
+        res.sendStatus(403);
+        console.log(e);
+    };
+};
+
 //INSERTAR producto e imagen
 const crear = async (req, res) => {
-    const body = JSON.parse(JSON.stringify(req.body));
-    const file = JSON.parse(JSON.stringify(req.file));
+    const body = req.body;
+    const file = req.file;
     const obj = {body, file}
     console.log(obj);
     await service.createProducto(obj);
@@ -50,8 +61,9 @@ const eliminar = async (req, res) => {
 }
 
 router.get("/", traerCategorias);
-router.post("/crear", upload.single("imagen"), crear); // request -> file : {}
-router.put('/editar/:id', actualizar);
-router.delete('/:categoria/:id/eliminar', eliminar);
+router.get('/productos', traerTodos);
+router.post("/productos/crear", upload.single("imagen"), crear);
+router.put('/productos/:id/editar', actualizar);
+router.delete('/productos/:id/eliminar', eliminar);
 
 module.exports = router;

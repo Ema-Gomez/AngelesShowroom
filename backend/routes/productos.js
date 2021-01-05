@@ -6,9 +6,9 @@ const {agregarProducto} = require('../services/carrito');
 //Obtener TODOS los productos
 const traerTodos = async (req, res) => {
     try{
-        console.log(req.session);
         const productos = await model.traerTodos();
         res.json(productos);
+        console.log(productos);
     } catch (e) {
         res.sendStatus(403);
         console.log(e);

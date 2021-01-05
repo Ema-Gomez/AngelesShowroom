@@ -26,7 +26,7 @@ const actualizarUsuario = (obj, id) =>
 
 const traerUsuario = ({ nombreUsuario, password }) =>
 pool
-  .query("SELECT id FROM ?? WHERE nombreUsuario = ? and password = ? and habilitado = 1 and deshabilitado = 0 and admin = 0", [T_USUARIOS, nombreUsuario, password])
+  .query("SELECT id, admin FROM ?? WHERE nombreUsuario = ? and password = ? and habilitado = 1 and deshabilitado = 0", [T_USUARIOS, nombreUsuario, password])
   .then((result) => result)
   .catch((e) => console.log(e));
 

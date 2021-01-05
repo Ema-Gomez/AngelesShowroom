@@ -7,13 +7,19 @@ import { ProductosService } from 'src/app/services/productos.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-
+  productos: any
   constructor(private service: ProductosService) {
 
    }
 
   async ngOnInit() {
-    const productos = await this.service.getAll('http://localhost:3000/productos/todos');
+    this.obtenerProductos()
+  }
+
+  async obtenerProductos() {
+    const productos:any = await this.service.obtenerProductos("productos/todos");
+    this.productos = productos;
     console.log(productos);
   }
+
 }
