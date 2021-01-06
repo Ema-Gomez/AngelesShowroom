@@ -16,6 +16,18 @@ pool
   .then((response) => response)
   .catch((e) => console.log(e));
 
+// Traer imagenes
+const traerImagen = (idProducto) =>  
+pool
+  .query('SELECT id AS idImagen FROM ?? WHERE idProducto = ?', [T_PRODUCTOS_IMAGENES, idProducto])
+  .then((response) => response)
+  .catch((e) => console.log(e))
+
+const eliminarImagen = (id) =>
+  pool
+    .query("DELETE FROM ?? WHERE id = ?", [T_PRODUCTOS_IMAGENES, id])
+    .then((result) => result)
+    .catch((e) => console.log(e))
 // Obtener TODOS los productos
 const traerTodos = async () => {
     const query = "SELECT p.id, c.id AS idCategoria, c.nombreCategoria AS categoria ,p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ?"
@@ -45,10 +57,10 @@ const actualizarProducto = (obj, id) =>
       .catch((e) => console.log(e))
 
 //Eliminar producto
-const eliminarProducto = (id) =>
+const eliminarProducto = (idProducto) =>
     pool
-      .query("DELETE FROM ?? WHERE id = ?", [T_PRODUCTOS, id])
+      .query("DELETE FROM ?? WHERE id = ?", [T_PRODUCTOS, idProducto])
       .then((result) => result)
       .catch((e) => console.log(e))
 
-module.exports = {traerTodos, traerPorId, TraerPorCat, crearProducto, crearImagen, actualizarProducto, eliminarProducto};
+module.exports = {traerTodos, traerPorId, TraerPorCat, traerImagen, crearProducto, crearImagen, actualizarProducto, eliminarProducto, eliminarImagen};

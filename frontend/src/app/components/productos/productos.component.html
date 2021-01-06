@@ -1,1 +1,12 @@
-<p>productos works!</p>
+<div class="row">
+    <div class="col-4 mb-2 mt-2" *ngFor="let producto of productos">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{producto.nombre}}</h5>
+                <p class="card-text">{{producto.descripcion}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>

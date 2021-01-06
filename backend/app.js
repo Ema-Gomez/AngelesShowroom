@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require("dotenv");
 const cors = require('cors')
-const {usuarioToken, authAdmin, adminToken} = require('./middlewares/auth');
+const {usuarioToken, adminToken} = require('./middlewares/auth');
 dotenv.config();
 
 const indexRouter = require('./routes/index');
@@ -15,6 +15,7 @@ const loginRouter = require('./routes/login');
 const misDatosRouter = require('./routes/mis_datos');
 const productosRouter = require('./routes/productos');
 const registroRouter = require('./routes/registro');
+const categoriasRouter = require('./routes/categorias');
 const adminProductosRouter = require('./routes/admin/productos');
 const adminCategoriasRouter = require('./routes/admin/categorias');
 var app = express();
@@ -37,10 +38,10 @@ app.use('/login', loginRouter);
 app.use('/mis_datos', usuarioToken, misDatosRouter);
 app.use('/productos', usuarioToken, productosRouter);
 app.use('/registro', registroRouter);
+app.use('/categorias', categoriasRouter);
 
 //Rutas admin
-app.use('/admin/productos', adminToken ,adminProductosRouter);
-app.use('/admin/categorias', adminToken, adminCategoriasRouter);
+app.use('/admin', adminProductosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

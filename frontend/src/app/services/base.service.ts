@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { CookieService } from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +8,8 @@ import { CookieService } from "ngx-cookie-service";
 
 export class BaseService {
   
-  constructor(private http: HttpClient, private cookies: CookieService) {}
-
+  constructor(private http: HttpClient) {}
+  
   async get(url:string) {
     try{
       return this.http.get(`${environment.baseUrl}/${url}`).toPromise()   
@@ -35,12 +34,11 @@ export class BaseService {
     }
   }
 
-  setToken(token: string) {
-    this.cookies.set("authorization", token);
+  async delete(url:string) {
+    try{
+      return this.http.delete(`${environment.baseUrl}/${url}`).toPromise();
+    } catch(e) {
+    console.log(e);
+    }  
   }
-  getToken() {
-    return this.cookies.get("authorization");
-  }
-  
 }
-

@@ -5,28 +5,27 @@ const jwt = require("jsonwebtoken");
 const { validateLogin } = require("./../middlewares/users");
 const { traerUsuario } = require("./../models/usuarios");
 
-const view = (req, res) => res.render('login');
 const login = async (req, res) => {
   try {
     req.body.password = sha1(req.body["password"]);
     const data = req.body;
-    const result = await traerUsuario(data);
-    const{id, admin} = result
-    if(admin === 1) {
+    const [{id, admin}] = await traerUsuario(data);
+    if(admin == 1) {
       const adminToken = jwt.sign(id, process.env.SECRET_TOKEN);
-      req.headers.authorization = adminToken
+      console.log(adminToken);
+      req.headers.authorization = `adm ${adminToken}`
       const {authorization} = req.headers;
       console.log(authorization);
       res.json(authorization);
-    } else{
+    } else {
       const token = jwt.sign(id, process.env.SECRET_TOKEN);
       req.headers.authorization = token;
       const {authorization} = req.headers; 
+      console.log(authorization);
       res.json(authorization);
     }
   } catch (e) {
-    console.log(e)
-    // res.sendStatus(500);
+    res.sendStatus(500);
     // res.render('error')
   }
 };
@@ -39,7 +38,6 @@ router.get("/", (req, res) => {
   res.render("login", {});
 });
 */
-router.get('/', view);
 router.post("/in", validateLogin, login);
 
 module.exports = router;

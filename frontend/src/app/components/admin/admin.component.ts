@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-admin',
@@ -10,13 +11,15 @@ export class AdminComponent implements OnInit {
   constructor(private service: AdminService) { }
 
   async ngOnInit() {
-    this.obtenerProductos();
+    this.traerProductos();
   }
 
-  async obtenerProductos() {
+  async traerProductos() {
     const productos:any = await this.service.adminProductos("admin/productos");
     this.productos = productos;
     console.log(productos);
   }
-
+  
+  
 }
+

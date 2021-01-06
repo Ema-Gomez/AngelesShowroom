@@ -7,16 +7,9 @@ const config = { dest: `./public/tmp` };
 const upload = multer(config);
 const service = require("../../services/producto");
 
-//Traer categorias el form de nuevo producto
-const traerCategorias = async (req, res) => {
-    try{
-        const categorias = await traer();
-        res.json(categorias);
-    } catch(e) {
-        console.log(e);
-    }
-}
+const ver = (req, res) => res.render('producto');
 
+//Traer productos y categorias(para form de nuevo producto)
 const traerTodos = async (req, res) => {
     try{
         const productos = await model.traerTodos();
@@ -24,7 +17,6 @@ const traerTodos = async (req, res) => {
         console.log(productos);
     } catch (e) {
         res.sendStatus(403);
-        console.log(e);
     };
 };
 
@@ -32,9 +24,8 @@ const traerTodos = async (req, res) => {
 const crear = async (req, res) => {
     const body = req.body;
     const file = req.file;
-    const obj = {body, file}
     console.log(obj);
-    await service.createProducto(obj);
+    await service.crearProductoImagen(body, file);
     res.end();
 }
 
@@ -53,15 +44,16 @@ const actualizar = async (req, res) => {
 //Eliminar producto
 const eliminar = async (req, res) => {
     try{
-        const {id} = req.params;
-        return await model.eliminar(id);
+        const {id:idProducto} = req.params;
+        const {id} = await model.traerImagen(idProducto)
+        await model.eliminarImagen(id);
+        await model.eliminarProducto(idProducto);
     } catch (error) {
         console.log(error)
     }
 }
-
-router.get("/", traerCategorias);
-router.get('/productos', traerTodos);
+router.get('/', ver)
+router.get("/productos", traerTodos);
 router.post("/productos/crear", upload.single("imagen"), crear);
 router.put('/productos/:id/editar', actualizar);
 router.delete('/productos/:id/eliminar', eliminar);

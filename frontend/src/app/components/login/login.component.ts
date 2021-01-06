@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.nombreUsuario,
       password: this.password
     }  
-    const login:any = await this.service.login("login/in", usuario);
+    let login:any = await this.service.login("login/in", usuario);
+
+    console.log(usuario);
     
     return localStorage.setItem("authorization", login);
     
