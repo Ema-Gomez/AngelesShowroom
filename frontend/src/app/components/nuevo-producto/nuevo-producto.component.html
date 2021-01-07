@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <form method="POST" action="" enctype = " multipart / form-data ">
+            <form method="POST" action='' enctype="multipart/form-data"> 
                 <div class="form-group">
-                    <input type="file" [(ngModel)]="imagen" name="imagen" class="form-control">
+                    <input type="file" name="imagen" class="form-control" (change)="seleccionarImagen($event)">
                 </div>
-                <div>
-                    <select name="idCategorias" value="" id="">
-                        <option *ngFor="let categoria of categorias" [(ngModel)]="idCategorias" value="{{categoria.id}}">{{categoria.nombreCategoria}}</option>
-                    </select>
-                </div>
+                <div class="form-group">
+                   <select name="" id="" [(ngModel)]="idCategorias" (change)="obtenerValue($event)">
+                       <option *ngFor="let c of categorias" name="idCategorias" [value]="c.id">{{c.nombreCategoria}}</option>
+                   </select>
+                </div>                
                 <div class="form-group">
                     <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="nombre del producto" class="form-control">
                 </div>
@@ -23,10 +23,11 @@
                     <input type="text" [(ngModel)]="color" name="color" placeholder="color" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="number" [(ngModel)]="precio" name=talle placeholder="precio" class="form-control">
+                    <input type="number" [(ngModel)]="precio" name="precio" placeholder="precio" class="form-control">
                 </div>
                 <button type="submit" (click)="nuevoProducto()" class="btn btn-primary btn-block">Registrar</button>
             </form>
+            <p>el valor selecionado es {{idCategorias}}</p>
         </div>
     </div>
 </div>

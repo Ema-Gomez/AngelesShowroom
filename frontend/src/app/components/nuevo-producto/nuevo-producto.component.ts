@@ -9,13 +9,13 @@ import { AdminService } from 'src/app/services/admin.service';
 export class NuevoProductoComponent implements OnInit {
   categorias:any
 
-  idCAtegorias:string
+  idCategorias:any
   nombre:string
   descripcion:string
-  precio:number
+  precio:string
   talle:string
   color:string
-  imagen:string
+  imagen:any
   
   constructor(private service:AdminService) { }
 
@@ -30,19 +30,46 @@ export class NuevoProductoComponent implements OnInit {
     console.log(categoria);
   }
 
-  async nuevoProducto() {
-    let producto = {
-      idCategorias: this.idCAtegorias,
-      nombre: this.nombre,
-      descripcion: this.descripcion,
-      precio: this.precio,
-      talle: this.talle,
-      color: this.color,
-      imagen: this.imagen
+  seleccionarImagen(event) {
+    if(event.target.files.lenght != 0) {
+      const file = event.target.files[0];
+      this.imagen = file
+      console.log(this.imagen)
+    } else {
+      console.log("error pa!")
     }
-    
-    const nuevo = await this.service.nuevoProducto("admin/productos/crear", producto)
-    console.log(producto);
-    return nuevo;
+
   }
+
+  obtenerValue(event) {
+    const id = event.target.value 
+    this.idCategorias = id
+  }
+
+  async nuevoProducto() {
+    /*
+    const form = {
+      idCategorias:this.idCategorias,
+      nombre:this.nombre,
+      descripcion:this.descripcion,
+      talle:this.talle,
+      color:this.color,
+      precio:this.precio,
+      imagen:this.imagen
+      
+      */
+     
+     const formData = new FormData();
+     formData.append("imagen", this.imagen)
+     formData.append("idCategorias", this.idCategorias)
+     formData.append("nombre", this.nombre)
+     formData.append("descripcion", this.descripcion)
+     formData.append("precio", this.precio)
+     formData.append("talle", this.talle)
+     formData.append("color", this.color)
+     
+     const nuevo = await this.service.nuevoProducto("admin/productos/crear", formData)
+     return nuevo;
+    }
 }
+

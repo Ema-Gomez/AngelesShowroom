@@ -1,4 +1,3 @@
-const { response } = require("express");
 const pool = require("./../utils/bd");
 const T_CLIENTES = "clientes";
 

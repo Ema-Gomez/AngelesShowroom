@@ -22,10 +22,10 @@ const traerTodos = async (req, res) => {
 
 //INSERTAR producto e imagen
 const crear = async (req, res) => {
-    const body = req.body;
+    const producto = req.body;
     const file = req.file;
-    console.log(obj);
-    await service.crearProductoImagen(body, file);
+    console.log(producto, file);
+    await service.crearProductoImagen(producto, file);
     res.end();
 }
 
@@ -45,8 +45,7 @@ const actualizar = async (req, res) => {
 const eliminar = async (req, res) => {
     try{
         const {id:idProducto} = req.params;
-        const {id} = await model.traerImagen(idProducto)
-        await model.eliminarImagen(id);
+        await model.eliminarImagen(idProducto);
         await model.eliminarProducto(idProducto);
     } catch (error) {
         console.log(error)

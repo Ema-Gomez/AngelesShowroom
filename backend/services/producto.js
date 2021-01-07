@@ -1,13 +1,13 @@
 const {crearProducto, crearImagen} = require('./../models/productos');
 const { imgFile } = require("./../utils/fileHandler");
 
-const crearProductoImagen = async (body, file) => {
+const crearProductoImagen = async (producto, file) => {
     try {
-      const {insertId: idProducto} = await crearProducto(body); // retorna el insertId 
-      console.log(idProducto);
+      const {insertId: idProducto} = await crearProducto(producto); // retorna el insertId 
       const uid = imgFile(file); // retorna el name de la imagen
-      const imagen = { idProducto, uid };
-      await crearImagen(imagen);
+      const obj = { idProducto, uid };
+      const {insertId : idFile} = await crearImagen(obj);
+      return idFile
     } catch (e) {
       console.error(e);
     }
