@@ -1,8 +1,8 @@
 .header{
 background-color: #F3E9B6;
-
+box-shadow: -5px 8px 9px -11px rgba(0,0,0,0.75);
 }
 
 .logo{
-    height: 23vh;
+    height: 20vh;
 }
