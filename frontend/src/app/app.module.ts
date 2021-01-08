@@ -18,6 +18,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function tokenGetter() {
   return localStorage.getItem("authorization")
@@ -35,7 +36,8 @@ export function tokenGetter() {
     AdminComponent,
     InicioComponent,
     IdAdminComponent,
-    NuevoProductoComponent
+    NuevoProductoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

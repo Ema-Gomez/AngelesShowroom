@@ -9,6 +9,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 
+
 const routes: Routes = [
   {path: 'registro', component: RegistroComponent},
   {path: 'login', component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
   {path: 'admin/eliminar/:id', component:IdAdminComponent},
+
   
 ];
 
