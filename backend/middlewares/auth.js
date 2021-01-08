@@ -13,11 +13,12 @@ const adminToken = (req, res, next) => {
         res.end();
       }else{
         req.token = token
+        console.log("admin autorizado!")
         next();
       }
     })
   } else {
-    res.redirect("http://localhost:3000/login")
+    console.log("Error de auth!")
   }
 };
 

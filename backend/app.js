@@ -36,12 +36,12 @@ app.use('/users', usersRouter);
 app.use('/compra', compraRouter);
 app.use('/login', loginRouter);
 app.use('/mis_datos', usuarioToken, misDatosRouter);
-app.use('/productos', productosRouter);
+app.use('/productos', usuarioToken,productosRouter);
 app.use('/registro', registroRouter);
 app.use('/categorias', categoriasRouter);
 
 //Rutas admin
-app.use('/admin', adminProductosRouter);
+app.use('/admin', adminToken, adminProductosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

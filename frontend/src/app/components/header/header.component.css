@@ -1,8 +1,9 @@
 .header{
-background-color: #F3E9B6;
+background-color: #E2CD97;
 box-shadow: -5px 8px 9px -11px rgba(0,0,0,0.75);
+padding-top: 5vh;
 }
 
 .logo{
-    height: 20vh;
+    height: 10vh;
 }

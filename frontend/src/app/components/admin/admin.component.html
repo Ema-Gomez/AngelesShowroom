@@ -1,23 +1,36 @@
-<div class="col-12 mt-5">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre Producto</th>
-                <th>Nombre Categoria</th>
-                <th>precio</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor='let producto of productos'>
-                <td>{{producto.id}}</td>
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.categoria}}</td>
-                <td>{{producto.precio}}</td>
-                <td><a href="" routerLink="editar/{{producto.id}}">Editar<i class="fas fa-pencil text-primary"></i></a></td>
-                <td><a href="" routerLink="eliminar/{{producto.id}}">Eliminar<i class="fas fa-trash text-danger"></i></a></td>
-            </tr>
-        </tbody>
-    </table>
+<div style="height: 35vh;"></div>
+<div class="container">    
+    <div class="row">    
+        <div class="col-12 mt-5">
+        <table class="table table-hover">
+            <thead>
+                <tr class="">
+                    <th class="justify-content-center">#</th>
+                    <th class="justify-content-center">Nombre</th>
+                    <th>categoria</th>
+                    <th>precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let producto of productos'>
+                    <td>{{producto.idProducto}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.nombreCategoria}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>
+                        <a href="" routerLink="editar/{{producto.idProducto}}">
+                            <img class="icono" src="../../../assets/iconos/lapiz.png" alt="">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" routerLink="eliminar/{{producto.idProducto}}">
+                            <img class="icono" src="../../../assets/iconos/basura.png" alt="">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

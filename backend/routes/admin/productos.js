@@ -12,10 +12,11 @@ const ver = (req, res) => res.render('producto');
 //Traer productos y categorias(para form de nuevo producto)
 const traerTodos = async (req, res) => {
     try{
-        const productos = await model.traerTodos();
+        const productos = await model.traerProductoImagen();
         res.json(productos);
         console.log(productos);
     } catch (e) {
+        console.log("Error en routes!")
         res.sendStatus(403);
     };
 };

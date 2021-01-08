@@ -19,7 +19,7 @@ pool
 // Traer productos e imagenes
 const traerProductoImagen = () =>  
 pool
-  .query('SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id WHERE i.habilitado = 1 ', [T_PRODUCTOS_IMAGENES, T_PRODUCTOS])
+  .query('SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color, c.nombreCategoria FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id JOIN ?? AS c ON p.idCategorias = c.id WHERE i.habilitado = 1 ', [T_PRODUCTOS_IMAGENES, T_PRODUCTOS, T_CATEGORIAS])
   .then((response) => response)
   .catch((e) => console.log(e))
 
