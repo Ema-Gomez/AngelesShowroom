@@ -23,14 +23,17 @@ export class LoginComponent implements OnInit {
     }  
     let token:any = await this.service.login("login/in", usuario);    
     console.log(token);
-    if(token !=="undefined"){
-      window.location.href = '/inicio'
-    } else{
-      console.log('no puede pasa')
-      document.write("<p>Usuario y/o password incorecto</p>")
+    if(token){
+      window.location.href = '/admin'
+    } else {
+      window.location.href = '/registro'
     }
     
-    return localStorage.setItem("authorization", token);
-    
+    return localStorage.setItem("authorization", token);      
   }
+
+  
 }
+
+
+

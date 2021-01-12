@@ -21,7 +21,6 @@ export class IdAdminComponent implements OnInit {
 
   
   async eliminarProductos() {
-    await this.service.delete(`admin/productos/${this.id}/eliminar`)
-    console.log(this.id); 
+    await this.service.delete(`admin/productos/${this.id}/eliminar`);  
   }
 }

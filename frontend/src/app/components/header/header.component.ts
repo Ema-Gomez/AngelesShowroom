@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro"]
+  baseUrl = ["/login", "/admin","/registro","/admin/nuevo_producto"]
   activeUrl: string;
   
   
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
       this.router.events
       .subscribe(() => {
           this.activeUrl = this.router.routerState.snapshot.url;
+          console.log(this.activeUrl)
           this.ocultar(this.activeUrl);
       })
     }

@@ -57,6 +57,8 @@ export class NuevoProductoComponent implements OnInit {
      formData.append("color", this.color)
      
      const nuevo = await this.service.nuevoProducto("admin/productos/crear", formData)
+
+     window.location.href = "/admin"
      
     }
 }

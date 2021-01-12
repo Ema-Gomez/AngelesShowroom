@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class FooterComponent implements OnInit {
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro"]
+  baseUrl = ["/login", "/admin","/registro", "/admin/nuevo_producto"]
   activeUrl: string;
 
   constructor(private router:Router) { }
