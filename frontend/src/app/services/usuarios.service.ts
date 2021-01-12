@@ -13,7 +13,12 @@ export class UsuariosService extends BaseService{
   }
 
   async login(url:string, obj:any) {
-    return this.post(url, obj)
+    try{
+
+      return this.post(url, obj)
+    } catch {
+      console.log("error en service")
+    }
   }
   
   async actualizarDatos(url:string, obj:any) {

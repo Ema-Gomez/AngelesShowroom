@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -46,19 +46,7 @@ export class NuevoProductoComponent implements OnInit {
     this.idCategorias = id
   }
 
-  async nuevoProducto() {
-    /*
-    const form = {
-      idCategorias:this.idCategorias,
-      nombre:this.nombre,
-      descripcion:this.descripcion,
-      talle:this.talle,
-      color:this.color,
-      precio:this.precio,
-      imagen:this.imagen
-      
-      */
-     
+  async nuevoProducto() {     
      const formData = new FormData();
      formData.append("imagen", this.imagen)
      formData.append("idCategorias", this.idCategorias)
@@ -69,7 +57,7 @@ export class NuevoProductoComponent implements OnInit {
      formData.append("color", this.color)
      
      const nuevo = await this.service.nuevoProducto("admin/productos/crear", formData)
-     return nuevo;
+     
     }
 }
 

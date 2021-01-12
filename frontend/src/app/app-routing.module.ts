@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
   {path: 'admin/eliminar/:id', component:IdAdminComponent},
-
+  {path: "", redirectTo:"login", pathMatch: 'full'}
   
 ];
 

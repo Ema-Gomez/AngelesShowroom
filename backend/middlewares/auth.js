@@ -9,7 +9,7 @@ const adminToken = (req, res, next) => {
     console.log(token);
     jwt.verify(token, process.env.SECRET_TOKEN, (err, token) => {
       if(err) {
-        res.sendStatus(403)
+        res.sendStatus(401)
         res.end();
       }else{
         req.token = token
@@ -30,12 +30,12 @@ const usuarioToken = (req, res, next) => {
         res.sendStatus(403)
       } else{
         req.token = webToken; 
-        console.log(webToken);
+        console.log('usuario autorizado');
         next();
       }
     })
   } else {
-    res.sendStatus(403);
+    res.sendStatus(401);
   }
 };
 module.exports = { adminToken, usuarioToken };

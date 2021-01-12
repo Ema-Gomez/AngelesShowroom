@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
+  mostrar:boolean = true
+  baseUrl = ["/login", "/admin","/registro"]
+  activeUrl: string;
+  
+  
+  constructor(private router:Router){
+    
+  }
+  
   ngOnInit(): void {
+    if (isPlatformBrowser) {
+      this.router.events
+      .subscribe(() => {
+          this.activeUrl = this.router.routerState.snapshot.url;
+          this.ocultar(this.activeUrl);
+      })
+    }
   }
 
+  ocultar (activeUrl) {
+    this.baseUrl.forEach(value =>{
+      if (activeUrl === value) {
+        console.log(activeUrl) 
+        this.mostrar= false        
+      } else {
+        console.log("Header permitido!")
+      }      
+    }) 
+  }
 }

@@ -19,6 +19,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function tokenGetter() {
   return localStorage.getItem("authorization")
@@ -51,7 +52,8 @@ export function tokenGetter() {
           disallowedRoutes: [""],
           authScheme: ""
       }
-    })
+    }),
+    NgbModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

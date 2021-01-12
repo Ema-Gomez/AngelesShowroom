@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
+import { isPlatformBrowser } from '@angular/common';
+
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  mostrar:boolean = true
+  baseUrl = ["/login", "/admin","/registro"]
+  activeUrl: string;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+    if (isPlatformBrowser) {
+      this.router.events
+      .subscribe(() => {
+          this.activeUrl = this.router.routerState.snapshot.url;
+          this.ocultar(this.activeUrl);
+      })
+    }
   }
 
+  ocultar (activeUrl) {
+    this.baseUrl.forEach(value =>{
+      if (activeUrl === value) {
+        console.log(activeUrl) 
+        this.mostrar= false        
+      } else {
+        console.log("Footer permitido!")
+      }      
+    }) 
+  }
 }

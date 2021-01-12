@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   nombreUsuario:string;
   password:string;
 
-  constructor(private service: UsuariosService) { }
+  constructor(private service: UsuariosService, private route:Router ) { }
 
   ngOnInit(): void {
   }
@@ -20,11 +21,16 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.nombreUsuario,
       password: this.password
     }  
-    let login:any = await this.service.login("login/in", usuario);
-
-    console.log(usuario);
+    let token:any = await this.service.login("login/in", usuario);    
+    console.log(token);
+    if(token !=="undefined"){
+      window.location.href = '/inicio'
+    } else{
+      console.log('no puede pasa')
+      document.write("<p>Usuario y/o password incorecto</p>")
+    }
     
-    return localStorage.setItem("authorization", login);
+    return localStorage.setItem("authorization", token);
     
   }
 

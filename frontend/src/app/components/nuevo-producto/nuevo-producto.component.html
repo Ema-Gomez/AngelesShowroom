@@ -1,19 +1,15 @@
 <div style="height: 35vh;"></div>
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <form method="POST" action='' enctype="multipart/form-data"> 
-                <div class="form-group">
-                    <input type="file" name="imagen" class="form-control" (change)="seleccionarImagen($event)">
-                </div>
-                <div class="form-group">
-                   <select name="" id="" [(ngModel)]="idCategorias" (change)="obtenerValue($event)">
-                       <option *ngFor="let c of categorias" name="idCategorias" [value]="c.id">{{c.nombreCategoria}}</option>
-                   </select>
-                </div>                
+    <div class="row justify-content-center">
+        <div class="col-4 border rounded pb-4 pt-4">
+            <form method="POST" action='' enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="nombre del producto" class="form-control">
                 </div>
+                    <select class=" form-group custom-select" name="" id="" [(ngModel)]="idCategorias" (change)="obtenerValue($event)">
+                        <option selected>Categoria</option>
+                        <option *ngFor="let c of categorias" name="idCategorias" [value]="c.id">{{c.nombreCategoria}}</option>
+                    </select>             
                 <div class="form-group">
                     <input type="text" [(ngModel)]="descripcion" name="descripcion" placeholder="descripcion" class="form-control">
                 </div>
@@ -26,9 +22,14 @@
                 <div class="form-group">
                     <input type="number" [(ngModel)]="precio" name="precio" placeholder="precio" class="form-control">
                 </div>
-                <button type="submit" (click)="nuevoProducto()" class="btn btn-primary btn-block">Registrar</button>
+                <div class="custom-file form-group">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <button type="submit" (click)="nuevoProducto()" class="btn btn-secondary btn-block">Agregar</button>
+                </div>
             </form>
-            <p>el valor selecionado es {{idCategorias}}</p>
         </div>
     </div>
 </div>

@@ -25,7 +25,7 @@ const login = async (req, res) => {
       res.json(authorization);
     }
   } catch (e) {
-    res.sendStatus(500);
+    console.log(e);
     // res.render('error')
   }
 };
