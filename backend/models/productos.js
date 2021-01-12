@@ -31,6 +31,13 @@ pool
   .then((result) => result)
   .catch((e) =>console.log(e));
 
+//Modificar imagen
+const actualizarImagen = (obj, idProducto) =>
+    pool
+      .query("UPDATE ?? SET ? WHERE idProducto = ?",[T_PRODUCTOS_IMAGENES, obj, idProducto])
+      .then((result) => {result; console.log(result)})
+      .catch((e) => console.log(e))
+
 //Eliminar imagenes por id  
 const eliminarImagen = (idProducto) =>
   pool
@@ -73,4 +80,4 @@ const eliminarProducto = (idProducto) =>
       .then((result) => result)
       .catch((e) => console.log(e))
 
-module.exports = {traerTodos, traerPorId, traerImagen, TraerPorCat, traerProductoImagen, crearProducto, crearImagen, actualizarProducto, eliminarProducto, eliminarImagen};
+module.exports = {traerTodos, traerPorId, traerImagen, actualizarImagen, TraerPorCat, traerProductoImagen, crearProducto, crearImagen, actualizarProducto, eliminarProducto, eliminarImagen};

@@ -20,6 +20,7 @@ import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 
 export function tokenGetter() {
   return localStorage.getItem("authorization")
@@ -38,7 +39,8 @@ export function tokenGetter() {
     InicioComponent,
     IdAdminComponent,
     NuevoProductoComponent,
-    HeaderComponent
+    HeaderComponent,
+    EditarProductoComponent
   ],
   imports: [
     BrowserModule,

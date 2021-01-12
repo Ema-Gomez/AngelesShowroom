@@ -36,7 +36,7 @@ app.use('/users', usersRouter);
 app.use('/compra', compraRouter);
 app.use('/login', loginRouter);
 app.use('/mis_datos', usuarioToken, misDatosRouter);
-app.use('/productos', usuarioToken,productosRouter);
+app.use('/productos', productosRouter);
 app.use('/registro', registroRouter);
 app.use('/categorias', categoriasRouter);
 

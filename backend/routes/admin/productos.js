@@ -34,9 +34,14 @@ const crear = async (req, res) => {
 //Modificar producto
 const actualizar = async (req, res) => {
     try {
-        const {id} = req.params;
-        const obj = req.body;
-        return await model.update(obj, id)
+        const {id: idProducto} = req.params;
+        const producto = req.body;
+        const file = req.file;
+        await service.editarProductoImagen(producto, file, idProducto);
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Producto editado!"
+        })
     } catch (error) {
         console.log(error)
     }
@@ -55,7 +60,7 @@ const eliminar = async (req, res) => {
 router.get('/', ver)
 router.get("/productos", traerTodos);
 router.post("/productos/crear", upload.single("imagen"), crear);
-router.put('/productos/:id/editar', actualizar);
+router.put('/productos/:id/editar', upload.single('imagen'), actualizar);
 router.delete('/productos/:id/eliminar', eliminar);
 
 module.exports = router;

@@ -8,6 +8,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import {AdminComponent} from './components/admin/admin.component';
 import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
+import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+
 
 
 const routes: Routes = [
@@ -20,8 +22,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
   {path: 'admin/eliminar/:id', component:IdAdminComponent},
-  {path: "", redirectTo:"login", pathMatch: 'full'}
-  
+  {path: "", redirectTo:"inicio", pathMatch: 'full'},
+  {path: 'admin/editar/:id', component: EditarProductoComponent}
 ];
 
 @NgModule({
