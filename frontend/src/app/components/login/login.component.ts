@@ -33,8 +33,4 @@ export class LoginComponent implements OnInit {
     return localStorage.setItem("authorization", token);
     
   }
-
-  logout() {
-    localStorage.removeItem("authorization");
-  }
 }
