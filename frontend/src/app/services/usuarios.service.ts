@@ -14,7 +14,6 @@ export class UsuariosService extends BaseService{
 
   async login(url:string, obj:any) {
     try{
-
       return this.post(url, obj)
     } catch {
       console.log("error en service")

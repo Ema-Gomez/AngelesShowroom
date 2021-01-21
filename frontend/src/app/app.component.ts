@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
-import { isConstructorDeclaration } from 'typescript';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-  title = 'angeles';
-}
+export class AppComponent {}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
@@ -7,15 +7,21 @@ import { NavbarService } from 'src/app/services/navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit{
   categorias: any
-  constructor(private service:NavbarService) { 
 
+  constructor(private service:NavbarService) {
+  }
+  
+  async ngOnInit() { 
+    this.traerCategorias();
   }
 
-  ngOnInit() {
+  async traerCategorias() {
+    this.categorias = await this.service.traerCategorias("categorias")
+    console.log(this.categorias) 
   }
-
+  
   logout() {
     localStorage.removeItem("authorization");
   }

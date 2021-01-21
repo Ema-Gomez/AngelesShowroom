@@ -1,9 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
 import { JwtModule } from "@auth0/angular-jwt";
+import { MaterialModule } from './material.module'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-produc
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem("authorization")
@@ -44,7 +47,9 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    MaterialModule,
     HttpClientModule,
     FormsModule,
     JwtModule.forRoot({
@@ -55,7 +60,7 @@ export function tokenGetter() {
           authScheme: ""
       }
     }),
-    NgbModule
+    NgbModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
