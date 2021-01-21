@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
 import { JwtModule } from "@auth0/angular-jwt";
-import { MaterialModule } from './material.module'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +48,6 @@ export function tokenGetter() {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
     HttpClientModule,
     FormsModule,
     JwtModule.forRoot({
