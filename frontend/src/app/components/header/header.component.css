@@ -1,10 +1,10 @@
 .header{
-background-color: #E2CD97;
-box-shadow: -5px 8px 9px -11px rgba(0,0,0,0.75);
-padding-top: 3vh;
-padding-bottom: 3vh;
+    background-color: white;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 }
 
+
 .logo{
-    height: 10vh;
+    height: 15vh;
 }
