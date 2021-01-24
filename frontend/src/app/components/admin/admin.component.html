@@ -35,7 +35,7 @@
                         <td>{{producto.nombreCategoria}}</td>
                         <td>{{producto.precio}}</td>
                         <td>
-                            <a href="" routerLink="editar/{{producto.idProducto}}">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#editarProducto">
                                 <img class="icono" src="../../../assets/iconos/lapiz.png" alt="">
                             </a>
                         </td>
@@ -48,12 +48,12 @@
                 </tbody>
             </table>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#nuevoProducto">
               Agregar producto
             </button>
             
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal nuevo producto -->
+            <div class="modal fade" id="nuevoProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -69,6 +69,23 @@
                 </div>
               </div>
             </div> 
+            <!-- Modal editar producto -->
+            <div class="modal fade" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <app-editar-producto></app-editar-producto>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>       
     </div>
 </div>

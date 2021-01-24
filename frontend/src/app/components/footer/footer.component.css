@@ -3,3 +3,11 @@
     padding-top: 3vh;
     padding-bottom: 3vh;
     }
+
+.brand {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 2rem;
+}
+.instaLogo{
+    height: 6vh;
+}
