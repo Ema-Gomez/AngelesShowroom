@@ -1,4 +1,4 @@
 .imagen{
     height: 70vh;
-    padding-top: 1vh;
 }
+.imagen:hover {filter: opacity(.7);}
