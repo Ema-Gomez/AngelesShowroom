@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 
+//Servicio para envio de Mail 
 const enviarMail = async ({ email, subject = "Gracias por registrarte", message }) => {
   try {
     const transporter = nodemailer.createTransport({

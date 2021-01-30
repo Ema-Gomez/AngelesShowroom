@@ -1,6 +1,8 @@
-const {crearProducto, crearImagen, actualizarImagen, actualizarProducto} = require('./../models/productos');
+const {crearProducto, actualizarProducto} = require('./../models/productos');
+const { crearImagen, actualizarImagen} = require('./../models/productos_imagenes')
 const { imgFile } = require("./../utils/fileHandler");
 
+//Servicio para insertar producto e imagen en sus respectivas tablas
 const crearProductoImagen = async (producto, file) => {
   try {
     const {insertId: idProducto} = await crearProducto(producto); // retorna el insertId 
@@ -13,6 +15,7 @@ const crearProductoImagen = async (producto, file) => {
   }
 }
 
+//Servicio para editar producto e imagen por separado o en simultaneo
 const editarProductoImagen = async (producto, file, idProducto) => {
   try {
     if(file == undefined){
@@ -25,7 +28,6 @@ const editarProductoImagen = async (producto, file, idProducto) => {
       imagen = {uid : uid}
       await actualizarImagen(imagen, idProducto );
       await actualizarProducto(producto, idProducto); // retorna el insertId
-      console.log("salio else!")
     } 
   } catch (e) {
     console.error(e);

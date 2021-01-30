@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { validateLogin } = require("./../middlewares/users");
 const { traerUsuario } = require("./../models/usuarios");
 
+//Funcion para login con JWT 
 const login = async (req, res) => {
   try {
     req.body.password = sha1(req.body["password"]);
@@ -25,19 +26,10 @@ const login = async (req, res) => {
       res.json(authorization);
     }
   } catch (e) {
-    console.log(e);
-    // res.render('error')
+      res.send(e)
   }
 };
 
-// req.cookie
-/*
-router.get("/", (req, res) => {
-  const ipInfo = getIP(req);
-  console.log(ipInfo);
-  res.render("login", {});
-});
-*/
 router.post("/in", validateLogin, login);
 
 module.exports = router;

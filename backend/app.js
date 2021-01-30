@@ -8,16 +8,12 @@ const cors = require('cors')
 const {usuarioToken, adminToken} = require('./middlewares/auth');
 dotenv.config();
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const compraRouter = require('./routes/compra');
 const loginRouter = require('./routes/login');
-const misDatosRouter = require('./routes/mis_datos');
 const productosRouter = require('./routes/productos');
 const registroRouter = require('./routes/registro');
 const categoriasRouter = require('./routes/categorias');
 const adminProductosRouter = require('./routes/admin/productos');
-const adminCategoriasRouter = require('./routes/admin/categorias');
+
 var app = express();
 
 // view engine setup
@@ -31,11 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/compra', compraRouter);
+
 app.use('/login', loginRouter);
-app.use('/mis_datos', usuarioToken, misDatosRouter);
 app.use('/productos', productosRouter);
 app.use('/registro', registroRouter);
 app.use('/categorias', categoriasRouter);

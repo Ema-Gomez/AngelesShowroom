@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../models/productos')
-const {agregarProducto} = require('../services/carrito');
 
 //Obtener TODOS los productos
 const traerTodos = async (req, res) => {
@@ -37,23 +36,8 @@ const traerPorID = async (req, res) => {
     };
 };
 
-//Agregar producto a carrito
-const agregarAlCarrito = async (req,res) => {
-    try{/*
-        const {id} = req.params;
-        const [producto] = await model.traerPorId(id);
-        */
-        console.log(req.session);
-        //const {carrito} = req.session;
-        
-    } catch(e) {
-        console.log(e);
-    }
-
-
-}
 router.get('/todos', traerTodos);
 router.get('/:categoria', traerPorCat);
 router.get('/:categoria/:id',traerPorID);
-router.get('/:categoria/:id/agregar', agregarAlCarrito);
+
 module.exports = router;

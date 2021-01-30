@@ -7,7 +7,10 @@ const nuevaCategoria = async (req, res) => {
     try{
         const body = JSON.parse(JSON.stringify(req.body));
         await model.crear(body);
-        res.end();
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Categoria agregada!"
+        })
     } catch(e) {
         console.log(e);
     };
@@ -17,8 +20,12 @@ const eliminar = async (req, response) => {
     try{
         const {id} = req.params;
         await model.eliminar(id);
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Categoria eliminada!"
+        })
     } catch(e) {
-        console.log(e);
+        res.send(e);
     }
 };
 
@@ -27,8 +34,12 @@ const traer = async (req, res) => {
     try{
         const categorias = await model.traer();
         res.json(categorias)
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Categorias obtenidas!"
+        })
     } catch(e) {
-        console.log(e)
+        res.send(e)
     }
 };
 router.get('/', traer)

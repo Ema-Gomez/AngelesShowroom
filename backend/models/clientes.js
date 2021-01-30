@@ -1,14 +1,14 @@
 const pool = require("./../utils/bd");
 const T_CLIENTES = "clientes";
 
-//Insertar cliente
+//Crear cliente
 const crearCliente = (obj) =>
   pool
     .query("INSERT INTO ?? SET ?", [T_CLIENTES, obj])
     .then((response) => response)
     .catch((e) => e);
 
-//Actualizar datos
+//Actualizar datos de cliente
 const actualizarCliente = (obj, id) => 
   pool
     .query("UPDATE ?? SET ? WHERE id = ?", [T_CLIENTES, obj, id])

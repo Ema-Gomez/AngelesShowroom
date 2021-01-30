@@ -3,8 +3,6 @@ const router = express.Router();
 const model = require('./../models/usuarios');
 const {registrar} = require("./../services/registro");
 
-const mostrar = (req, res) => res.render("registro");
-
 const crear = async (req, res) => {
   try {
     const registro = JSON.parse(JSON.stringify(req.body));
@@ -30,7 +28,6 @@ const verificarEmail = async (req, res, next) => {
   };
 };
 
-router.get('/', mostrar);
 router.post('/crear', crear);
 router.get('/verify/:uid', verificarEmail);
 module.exports = router;

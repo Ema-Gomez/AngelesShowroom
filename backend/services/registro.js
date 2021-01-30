@@ -4,6 +4,7 @@ const { enviarMail } = require("./../services/mail");
 const sha1 = require("sha1");
 const { v4: uuid } = require("uuid");
 
+//Servicio para registro de usuario
 const registrar = async ({nombre, apellido, email, telefono, nombreUsuario, password} = {}) => {
   try {
     const uid = uuid()

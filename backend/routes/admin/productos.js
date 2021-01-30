@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../../models/productos');
+const {eliminarImagen} = require('../../models/productos_imagenes')
 const {traer} = require('../../models/categorias');
 const multer = require("multer"); // npm i multer
 const config = { dest: `./public/tmp` };
 const upload = multer(config);
 const service = require("../../services/producto");
 
-const ver = (req, res) => res.render('producto');
-
-//Traer productos y categorias(para form de nuevo producto)
+//Traer productos
 const traerTodos = async (req, res) => {
     try{
         const productos = await model.traerProductoImagen();
@@ -23,11 +22,18 @@ const traerTodos = async (req, res) => {
 
 //INSERTAR producto e imagen
 const crear = async (req, res) => {
-    const producto = req.body;
-    const file = req.file;
-    console.log(producto, file);
-    await service.crearProductoImagen(producto, file);
-    res.end();
+    try{
+        const producto = req.body;
+        const file = req.file;
+        await service.crearProductoImagen(producto, file);
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Producto agregado!"
+        })
+    } catch (e) {
+        res.send(e)
+
+    }
 }
 
 
@@ -43,7 +49,7 @@ const actualizar = async (req, res) => {
             mensaje: "Producto editado!"
         })
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 }
 
@@ -51,13 +57,17 @@ const actualizar = async (req, res) => {
 const eliminar = async (req, res) => {
     try{
         const {id:idProducto} = req.params;
-        await model.eliminarImagen(idProducto);
+        await eliminarImagen(idProducto);
         await model.eliminarProducto(idProducto);
+        res.status(200).json({
+            estado:"exitoso",
+            mensaje: "Producto eliminado!"
+        })
     } catch (error) {
         console.log(error)
     }
 }
-router.get('/', ver)
+
 router.get("/productos", traerTodos);
 router.post("/productos/crear", upload.single("imagen"), crear);
 router.put('/productos/:id/editar', upload.single('imagen'), actualizar);
