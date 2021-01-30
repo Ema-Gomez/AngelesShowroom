@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro","/admin/nuevo_producto"]
+  baseUrl = ["/login", "/admin","/registro","/admin/inicio"]
   activeUrl: string;
   
   

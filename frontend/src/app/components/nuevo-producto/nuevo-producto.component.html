@@ -5,8 +5,7 @@
                 <div class="form-group">
                     <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="nombre del producto" class="form-control">
                 </div>
-                    <select class=" form-group custom-select" name="" id="" [(ngModel)]="idCategorias" (change)="obtenerValue($event)">
-                        <option selected>Categoria</option>
+                    <select class=" form-group custom-select" [(ngModel)]="idCategorias" (change)="obtenerValue($event)">
                         <option *ngFor="let c of categorias" name="idCategorias" [value]="c.id">{{c.nombreCategoria}}</option>
                     </select>             
                 <div class="form-group">

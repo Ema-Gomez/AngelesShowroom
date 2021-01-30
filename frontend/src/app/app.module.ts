@@ -22,6 +22,7 @@ import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-produc
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 
 
 export function tokenGetter() {
@@ -42,7 +43,8 @@ export function tokenGetter() {
     IdAdminComponent,
     NuevoProductoComponent,
     HeaderComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    AdminNavComponent
   ],
   imports: [
     BrowserModule,

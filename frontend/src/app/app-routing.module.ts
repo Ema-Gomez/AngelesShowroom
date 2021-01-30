@@ -14,8 +14,8 @@ import { EditarProductoComponent } from './components/editar-producto/editar-pro
 
 const routes: Routes = [
   {path: 'registro', component: RegistroComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: LoginComponent},
+  {path: 'admin/inicio', component: AdminComponent},
   {path: 'inicio', component:InicioComponent},
   {path: 'productos', component: ProductosComponent},
   {path: 'mis_datos', component: MisDatosComponent},

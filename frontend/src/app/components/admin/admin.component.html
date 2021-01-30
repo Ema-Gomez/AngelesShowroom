@@ -1,93 +1,81 @@
 <div class="container-fluid fullScreen">    
-    <div class="row">
-        <div class="fullScreen col-xl-2 d-flex align-items-center justify-content-around" style="background-color: #E2CD97;">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-        </div>
-        <div class="col-xl-6 mt-5">   
-            <table class="table table-hover">
-                <thead>
-                    <tr class="">
-                        <th class="justify-content-center">#</th>
-                        <th class="justify-content-center">Nombre</th>
-                        <th>categoria</th>
-                        <th>Precio</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor='let producto of productos'>
-                        <td>{{producto.idProducto}}</td>
-                        <td>{{producto.nombre}}</td>
-                        <td>{{producto.nombreCategoria}}</td>
-                        <td>{{producto.precio}}</td>
-                        <td>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#editarProducto">
-                                <img class="icono" src="../../../assets/iconos/lapiz.png" alt="">
-                            </a>
-                        </td>
-                        <td>
-                            <a href="" routerLink="eliminar/{{producto.idProducto}}">
-                                <img class="icono" src="../../../assets/iconos/basura.png" alt="">
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#nuevoProducto">
-              Agregar producto
-            </button>
-            
-            <!-- Modal nuevo producto -->
-            <div class="modal fade" id="nuevoProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <app-nuevo-producto></app-nuevo-producto>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                  </div>
+  <div class="row">
+      <app-admin-nav></app-admin-nav>
+      <div class="col-xl-10 d-flex align-items-xl-center justify-content-xl-center">
+        <div class="col-xl-10">   
+          <table class="table table-hover">
+            <thead>
+              <tr class="">
+                <th class="justify-content-center">#</th>
+                <th class="justify-content-center">Nombre</th>
+                <th>categoria</th>
+                <th>Precio</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let producto of productos'>
+                <td>{{producto.idProducto}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.nombreCategoria}}</td>
+                <td>{{producto.precio}}</td>
+                <td>
+                  <a href="" data-bs-toggle="modal" data-bs-target="#editarProducto">
+                    <img class="icono" src="../../../assets/iconos/lapiz.png" alt="">
+                  </a>
+                </td>
+                <td>
+                  <a href="" routerLink="eliminar/{{producto.idProducto}}">
+                    <img class="icono" src="../../../assets/iconos/basura.png" alt="">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#nuevoProducto">
+            Agregar producto
+          </button>
+          
+          <!-- Modal nuevo producto -->
+          <div class="modal fade" id="nuevoProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </div>
-            </div> 
-            <!-- Modal editar producto -->
-            <div class="modal fade" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <app-editar-producto></app-editar-producto>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                  </div>
+                <div class="modal-body">
+                  <app-nuevo-producto></app-nuevo-producto>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
                 </div>
               </div>
             </div>
+          </div> 
+          <!-- Modal editar producto -->
+          <div class="modal fade" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <app-editar-producto></app-editar-producto>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>       
+      </div>
     </div>
 </div>
-
-
+        
+        

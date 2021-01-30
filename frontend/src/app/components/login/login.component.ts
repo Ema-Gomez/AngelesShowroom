@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,7 @@ export class LoginComponent implements OnInit {
   nombreUsuario:string;
   password:string;
 
-  constructor(private service: UsuariosService, private route:Router ) { }
+  constructor(private service: UsuariosService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
     let token:any = await this.service.login("login/in", usuario);    
     console.log(token);
     if(token){
-      window.location.href = '/admin'
+      window.location.href = '/admin/inicio'
     } else {
       window.location.href = '/registro'
     }

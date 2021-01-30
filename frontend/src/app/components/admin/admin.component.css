@@ -1,5 +1,9 @@
 .icono{
     height: 4vh;
+    overflow:hidden;
+}
+.icono:hover{
+    -webkit-transform:scale(1.3);transform:scale(1.3);
 }
 
 .fullScreen{
