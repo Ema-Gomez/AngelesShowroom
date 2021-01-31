@@ -1,3 +1,16 @@
 .customNav {
   background-color: white;
 }
+
+.logo{
+  height: 12vh;
+}
+
+.dropdown-item:hover{
+  transition-duration: 0,5s;
+  background-color: #ABB2B9;
+}
+
+li:checked{
+  background-color: #ABB2B9;
+}

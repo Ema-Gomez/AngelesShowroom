@@ -1,4 +1,13 @@
 .imagen{
-    height: 70vh;
+    height: 65vh;
 }
 .imagen:hover {filter: opacity(.7);}
+
+li:hover{
+    transition-duration: 0,5s;
+    background-color: #ABB2B9;
+}
+
+li:checked{
+    background-color: #ABB2B9;
+}
