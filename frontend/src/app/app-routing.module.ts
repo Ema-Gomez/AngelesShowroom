@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
   {path: 'admin/inicio/eliminar/:id', component:EliminarProductoComponent },
   {path: "", redirectTo:"inicio", pathMatch: 'full'},
-  {path: 'admin/editar/:id', component: EditarProductoComponent}
+  {path: 'admin/inicio/editar/:id', component: EditarProductoComponent}
 ];
 
 @NgModule({

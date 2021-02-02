@@ -12,7 +12,7 @@ button { background: none; border: 0; color: inherit;}
     }
     
     .imagenCard{
-        height: 40vh;
+        height: 35vh;
     }
     .imagenCard:hover {filter: opacity(.7);}
 }

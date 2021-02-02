@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./editar-producto.component.css']
 })
 export class EditarProductoComponent implements OnInit {
-  id:string
+  id:string = ""
   nombre:string = null
   descripcion:string = null
   precio:string = null
