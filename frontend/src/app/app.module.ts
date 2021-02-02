@@ -24,6 +24,7 @@ import { EditarProductoComponent } from './components/editar-producto/editar-pro
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import {EliminarProductoComponent} from './components/eliminar-producto/eliminar-producto.component';
+import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
 
 
 
@@ -47,7 +48,8 @@ export function tokenGetter() {
     EditarProductoComponent,
     AdminNavComponent,
     ProductoComponent,
-    EliminarProductoComponent
+    EliminarProductoComponent,
+    ProductosCategoriaComponent
   ],
   imports: [
     BrowserModule,
