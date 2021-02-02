@@ -3,7 +3,7 @@
 }
 
 .logo{
-  height: 12vh;
+  height: 7vh;
 }
 
 .dropdown-item:hover{
@@ -13,4 +13,9 @@
 
 li:checked{
   background-color: #ABB2B9;
+}
+
+.navText{
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
 }

@@ -21,5 +21,7 @@ export class ProductosComponent implements OnInit {
     this.productos = productos;
     console.log(productos);
   }
-
+  seleccionarProducto(event) {
+    const id = event
+  }
 }

@@ -17,12 +17,14 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { ProductoComponent } from './components/producto/producto.component';
+import {EliminarProductoComponent} from './components/eliminar-producto/eliminar-producto.component';
+
 
 
 export function tokenGetter() {
@@ -40,11 +42,12 @@ export function tokenGetter() {
     CategoriaComponent,
     AdminComponent,
     InicioComponent,
-    IdAdminComponent,
     NuevoProductoComponent,
     HeaderComponent,
     EditarProductoComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    ProductoComponent,
+    EliminarProductoComponent
   ],
   imports: [
     BrowserModule,

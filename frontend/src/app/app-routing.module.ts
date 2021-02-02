@@ -6,9 +6,9 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import {AdminComponent} from './components/admin/admin.component';
-import { IdAdminComponent } from './components/id-admin/id-admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+import { EliminarProductoComponent } from './components/eliminar-producto/eliminar-producto.component';
 
 
 
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'mis_datos', component: MisDatosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
-  {path: 'admin/eliminar/:id', component:IdAdminComponent},
+  {path: 'admin/inicio/eliminar/:id', component:EliminarProductoComponent },
   {path: "", redirectTo:"inicio", pathMatch: 'full'},
   {path: 'admin/editar/:id', component: EditarProductoComponent}
 ];

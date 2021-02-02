@@ -58,7 +58,7 @@ export class NuevoProductoComponent implements OnInit {
      
      const nuevo = await this.service.nuevoProducto("admin/productos/crear", formData)
 
-     window.location.href = "/admin"
+     window.location.href = "/admin/inicio"
      
     }
 }

@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
-
 @Component({
-  selector: 'app-id-admin',
-  templateUrl: './id-admin.component.html',
-  styleUrls: ['./id-admin.component.css']
+  selector: 'app-eliminar-producto',
+  templateUrl: './eliminar-producto.component.html',
+  styleUrls: ['./eliminar-producto.component.css']
 })
-export class IdAdminComponent implements OnInit {
+export class EliminarProductoComponent implements OnInit {
   id:string = "";
   constructor(private service:AdminService, private route:ActivatedRoute) {
     this.id = this.route.snapshot.params.id
@@ -21,6 +20,8 @@ export class IdAdminComponent implements OnInit {
 
   
   async eliminarProductos() {
-    await this.service.delete(`admin/productos/${this.id}/eliminar`);  
+    await this.service.delete(`admin/productos/${this.id}/eliminar`);
+    window.location.href = '/admin/inicio'  
   }
+
 }
