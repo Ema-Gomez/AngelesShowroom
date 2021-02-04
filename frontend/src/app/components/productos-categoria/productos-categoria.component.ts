@@ -14,6 +14,7 @@ export class ProductosCategoriaComponent implements OnInit {
 
   constructor(private service: ProductosService, private route:ActivatedRoute) {
     this.nombreCategoria = this.route.snapshot.params.nombreCategoria
+    console.log(this.nombreCategoria)
   }
 
   async ngOnInit() {
