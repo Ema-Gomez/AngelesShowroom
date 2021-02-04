@@ -5,7 +5,7 @@ const model = require('../models/productos')
 //Obtener TODOS los productos
 const traerTodos = async (req, res) => {
     try{
-        const productos = await model.traerProductoImagen();
+        const productos = await model.traerProductosImagenes();
         res.json(productos);
         console.log(productos);
     } catch (e) {
@@ -18,7 +18,7 @@ const traerTodos = async (req, res) => {
 const traerPorCat = async (req, res) => {
     try{
         const {categoria} = req.params;
-        const productos = await model.TraerPorCat(categoria);
+        const productos = await model.traerProductoImagen(categoria);
         res.json(productos);
     } catch (e) {
         console.log(e);

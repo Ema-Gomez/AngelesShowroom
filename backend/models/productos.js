@@ -9,19 +9,19 @@ const crearProducto = (producto) =>
     .then((response) => response)
     .catch((e) => console.log(e));
 
-// Obtener TODOS los productos
-const traerTodos = async () => {
-    const query = "SELECT p.id, c.id AS idCategoria, c.nombreCategoria AS categoria ,p.nombre, p.descripcion, p.precio, p.talle, p.color JOIN  FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ?"
-    const params = [T_PRODUCTOS, T_CATEGORIAS, 1];
-    return await pool.query(query, params)
-};
+// Obtener TODOS los productos y sus imagenes
+const traerProductosImagenes = () =>  
+pool
+  .query('SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color, c.nombreCategoria FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id JOIN ?? AS c ON p.idCategorias = c.id WHERE i.habilitado = 1 ', [T_PRODUCTOS_IMAGENES, T_PRODUCTOS, T_CATEGORIAS])
+  .then((response) => response)
+  .catch((e) => console.log(e))
 
-//Obtener productos segun CATEGORIA
-const TraerPorCat = async (categoria) => {
-    const query = "SELECT p.id, c.nombreCategoria AS categoria, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ? AND c.nombreCategoria = ?"
-    const params = [T_PRODUCTOS, T_CATEGORIAS, 1, categoria];
-    return await pool.query(query, params);
-};
+//Obtener productos y sus imagenes segun CATEGORIA 
+const traerProductoImagen = (categoria) =>  
+pool
+  .query('SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color, c.nombreCategoria FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id JOIN ?? AS c ON p.idCategorias = c.id WHERE i.habilitado = 1 AND c.nombreCategoria = ?', [T_PRODUCTOS_IMAGENES, T_PRODUCTOS, T_CATEGORIAS, categoria])
+  .then((response) => response)
+  .catch((e) => console.log(e))
 
 //Obtener producto segun ID
 const traerPorId = async (id) => {
@@ -44,12 +44,4 @@ const eliminarProducto = (idProducto) =>
       .then((result) => result)
       .catch((e) => console.log(e))
 
-// Traer productos e imagenes
-const traerProductoImagen = () =>  
-pool
-  .query('SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color, c.nombreCategoria FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id JOIN ?? AS c ON p.idCategorias = c.id WHERE i.habilitado = 1 ', [T_PRODUCTOS_IMAGENES, T_PRODUCTOS, T_CATEGORIAS])
-  .then((response) => response)
-  .catch((e) => console.log(e))
-
-
-module.exports = {traerTodos, traerPorId, TraerPorCat, traerProductoImagen, crearProducto, actualizarProducto, eliminarProducto};
+module.exports = { traerPorId, traerProductoImagen, traerProductosImagenes, crearProducto, actualizarProducto, eliminarProducto};
