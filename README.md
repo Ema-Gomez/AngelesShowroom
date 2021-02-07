@@ -56,6 +56,7 @@ npm i express-generator -g
 NODEMON (Utilidad que monitorea los cambios en el código fuente que se esta desarrollando y automáticamente nos muestra los cambios )
 ```
 npm i nodemon -g
+```
 
 NOTA: El -g implica que estos paquetes se instalan de forma global, es decir, pueden ser utilizados por cualquier nueva aplicacion que creamos.
 
@@ -67,14 +68,59 @@ Instalar angular CLI:
 ```
 npm i -g @angular/cli
 ```
+
 ## Comenzando: 
+Ahora debemos clonar el repositorio en tu maquina local. Lo puedes hacer desde [AQUI](https://github.com/Ema-Gomez/AngelesShowroom/archive/main.zip). Se descargara una carpeta llamada angelesShowroom que contiene tanto el back como el front.
+
+Dentro de la carpeta AngelesShowrrom/backend vas a encontrar una carpeta llamada "tablas-sql" en la cual se encuentra la base de datos "angelesshowroom.sql". Para poder utilizarla debemos:
+
+Ejecutar XAMPP, dentro de el debemos inicializar el servidor apache y mysql, debe quedar asi:
+<img src="/assets/Captura de pantalla xampp iniciado.png">
+
+Luego abrimos el navegador e ingresamos a "localhost/phpmyadmin" e ingresamos (por defecto sin contraseña).
+
+Clickeamos en nueva base de datos y le colocamos un nombre de referencia y la creamos.
+<img src="/assets/Captura de pantalla phpadmin nuev.png">
+
+A la izquierda nos aparecera la base de datos, clickeamos en ella y arrastramos el archivo "angelesshowroom.sql" y comenzaran a importarse las tablas del proyecto.
+Debe quedar asi:
+<img src="/assets/Captura de pantalla (8).png">
+
+Dejamos XAMPP activo y continuamos:
+
+Solo nos queda instalar algunas librerias especificas para este proyecto y asi poder inicializarlo.
+
+Primero instalamos las librerias del backend, para ello debemos abrir la terminal de nodejs y a traves del comando "cd" (change directory) ingresamos hasta la carpeta donde esta contenido el backend. Si la carpeta AngelesShowroom estuviera en el escritorio accederiamos de esta forma:
+
+Ingresar al escritorio:
+```
+cd desktop
+```
+Luego, ingresamos a la carpeta AngelesShowroom en el escritorio
+``` 
+cd angelesShowroom
+```
+Solo queda ingresar a la carpeta backend:
+```
+cd backend
+```
+Deberia verse asi:
+<img src="/assets/Captura de pantalla terminal en angeles.png">
+
+Aqui ya podemos instalar las librerias para el backend.
 
 LIBRERIAS PARA ESTE PROYECTO ESPECIFICO:
+
+Lo primero es instalar la carpeta node_modules donde se instalaran las siguientes librerias. Para esto ejecutamos:
+```
+npm install
+```
+Esperamos que termine y ya podemos continuar con los siguientes comandos:
 
 MYSQL (nos permite conectar a la base de datos mysql)
 ```
 npm i mysql
-
+```
 UTIL (nos permite realizar funciones asincronicas)
 ```
 npm i util
@@ -112,7 +158,19 @@ HAPI JOI (libreria para validaciones)
 npm i @hapi/joi
 ```
 
-Solo nos queda instalar angular jwt (dependencia para interceptar los JWT en el front). Tambien desde la terminal de NODEJS
+Solo nos queda instalar angular jwt (dependencia para interceptar los JWT en el front). Tambien desde la terminal de NODEJS.
+
+Esta vez debemos ingresar a la carpeta del front porque es una libreria especifica para el proyecto. Hacemos lo mismo que para ingresar a la carpeta backend, cambiando esta por frontend.
+
+deberia verse asi:
+<img src="/assets/Captura de pantalla terminal front.png">
+
+Solo queda tipear el siguiente comando:
+
 ```
 npm i @auth0/angular-jwt
 ```  
+Despues de esto, volvemos a la carpeta backend y ejecutamos "nodemon npm start". Comenzara a correr el backend.
+
+Debe verse asi: 
+<img src="/assets/Captura de pantalla (9).png">
