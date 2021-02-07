@@ -33,6 +33,7 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
+<<<<<<< HEAD
 ## Running the tests
 
 Explain how to run the automated tests for this system
@@ -56,3 +57,6 @@ Give an example
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
+=======
+## Comenzando
+>>>>>>> readme
