@@ -67,9 +67,9 @@ npm i -g @angular/cli
 ```
 
 ## Comenzando: 
-Ahora debemos clonar el repositorio en tu maquina local. Lo puedes hacer desde [AQUI](https://github.com/Ema-Gomez/AngelesShowroom/archive/main.zip). Se descargara una carpeta llamada angelesShowroom que contiene tanto el back como el front.
+Ahora debemos clonar el repositorio en tu maquina local. Lo puedes hacer desde [AQUI](https://github.com/Ema-Gomez/AngelesShowroom/archive/main.zip). Se descargara una carpeta llamada AngelesShowroom que contiene tanto el back como el front.
 
-Dentro de la carpeta AngelesShowrrom/backend vas a encontrar una carpeta llamada "tablas-sql" en la cual se encuentra la base de datos "angelesshowroom.sql". Para poder utilizarla debemos:
+Dentro de la carpeta AngelesShowroom/backend vas a encontrar una carpeta llamada "tablas-sql" en la cual se encuentra la base de datos "angelesshowroom.sql". Para poder utilizarla debemos:
 
 Ejecutar XAMPP, dentro de el debemos inicializar el servidor apache y mysql, debe quedar asi:
 <img src="/assets/Captura de pantalla xampp iniciado.png">
@@ -86,6 +86,8 @@ Debe quedar asi:
 Dejamos XAMPP activo y continuamos:
 
 Solo nos queda instalar algunas librerias especificas para este proyecto y asi poder inicializarlo.
+
+### Instalando librerias del backend:
 
 Primero instalamos las librerias del backend, para ello debemos abrir la terminal de nodejs y a traves del comando "cd" (change directory) ingresamos hasta la carpeta donde esta contenido el backend. Si la carpeta AngelesShowroom estuviera en el escritorio accederiamos de esta forma:
 
@@ -130,7 +132,7 @@ UUID (es un generador de identificadores unicos)
 ```
 npm i uuid
 ```
-EXPRESS-SESSIOM (generador de variables de sesion)
+EXPRESS-SESSION (generador de variables de sesion)
 ```
 npm i express-session
 ```
@@ -150,10 +152,12 @@ MULTER (manejador de archivos)
 ```
 npm i multer
 ```
-HAPI JOI (libreria para validaciones)
+HAPI/JOI (libreria para validaciones)
 ```
 npm i @hapi/joi
 ```
+
+### Instalando librerias del frontend:
 
 Solo nos queda instalar angular jwt (dependencia para interceptar los JWT en el front). Tambien desde la terminal de NODEJS.
 
@@ -181,7 +185,7 @@ Si todo salio bien, con ingresar desde el navegador a "localhost:4200" ya deberi
 
 ## Endpoints:
 
-Clientes: 
+### Clientes: 
 
 localhost:4200/inicio
 
@@ -189,7 +193,9 @@ localhost:4200/productos (Todos los productos disponibles)
 
 localhost:4200/productos/categoria (Todos los productos de la categoria seleccionada)
 
-Admin: Al solicitar alguna ruta de administrador se requerira un JWT que solo se obtendra si el administrador se loguea antes, de lo contrario no se podra acceder.
+### Admin: 
+
+Al solicitar alguna ruta de administrador se requerira un JWT que solo se obtendra si el administrador se loguea antes, de lo contrario no se podra acceder.
 
 localhost:4200/admin (login admin)
 
