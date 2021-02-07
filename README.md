@@ -37,13 +37,10 @@ Al abrir Node.js comand prompt deberias ver esto:
 
 <img src="/assets/Captura de pantalla terminal.png">
 
-Una vez instalado NODEJS, debemos abrir Node.js comand prompt (la terminal de NODEJS) desded la cual se debe descargar el FRAMEWORK express y algunas librerias necesarias para que el proyecto funcione correctamente.
 
-Al abrir Node.js comand prompt deberias ver esto:
+### Descargando express y librerias: 
 
-<img src="/assets/Captura de pantalla terminal.png">
-
-Descargando express y librerias: Para ello debemos utilizar el comando "npm install" o simplemente "npm i" (forma reducida) seguido de la libreria a instalar:
+Para ello debemos utilizar el comando "npm install" o simplemente "npm i" (forma reducida) seguido de la libreria a instalar:
 
 Express
 ```
@@ -174,3 +171,28 @@ Despues de esto, volvemos a la carpeta backend y ejecutamos "nodemon npm start".
 
 Debe verse asi: 
 <img src="/assets/Captura de pantalla (9).png">
+
+Por ultimo, abrimos la terminal de windows (cmd) e ingresamos a la carpeta frontend con el comando "cd" que funciona como en la terminal de NODEJS. Una vez en la carpeta frontend tipeamos el comando "ng serve" que inicializa el proyecto de angular.
+
+Debe quedar asi: 
+<img src="/assets/Captura de pantalla (10).png">
+
+Si todo salio bien, con ingresar desde el navegador a "localhost:4200" ya deberias poder visualizar el sitio.
+
+## Endpoints:
+
+Clientes: 
+
+localhost:4200/inicio
+
+localhost:4200/productos (Todos los productos disponibles)
+
+localhost:4200/productos/categoria (Todos los productos de la categoria seleccionada)
+
+Admin: Al solicitar alguna ruta de administrador se requerira un JWT que solo se obtendra si el administrador se loguea antes, de lo contrario no se podra acceder.
+
+localhost:4200/admin (login admin)
+
+localhost:4200/admin/inicio (por ahora aqui se realiza el CRUD de productos)
+
+
