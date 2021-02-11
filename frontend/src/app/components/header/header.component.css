@@ -1,8 +1,5 @@
 .header{
-    background-color: white;
-}
-
-
-.logo{
-    height: 10vh;
+    background-color: black;
+    height: 7vh;
+    font-size: 0.7em;
 }

@@ -7,10 +7,8 @@ const traerTodos = async (req, res) => {
     try{
         const productos = await model.traerProductosImagenes();
         res.json(productos);
-        console.log(productos);
     } catch (e) {
-        res.sendStatus(403);
-        console.log(e);
+        res.send(e)
     };
 };
 
@@ -21,7 +19,7 @@ const traerPorCat = async (req, res) => {
         const productos = await model.traerProductoImagen(categoria);
         res.json(productos);
     } catch (e) {
-        console.log(e);
+        res.send(e);
     };
 };
 
@@ -32,7 +30,7 @@ const traerPorID = async (req, res) => {
         const [producto] = await model.traerPorId(id);
         res.json(producto);
     } catch (e) {
-        console.log(e);
+        res.send(e);
     };
 };
 

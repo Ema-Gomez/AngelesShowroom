@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
 import { JwtModule } from "@auth0/angular-jwt";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +18,12 @@ import { AdminComponent } from './components/admin/admin.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { HeaderComponent } from './components/header/header.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import {EliminarProductoComponent} from './components/eliminar-producto/eliminar-producto.component';
 import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 
@@ -47,13 +48,15 @@ export function tokenGetter() {
     AdminNavComponent,
     ProductoComponent,
     EliminarProductoComponent,
-    ProductosCategoriaComponent
+    ProductosCategoriaComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -62,7 +65,6 @@ export function tokenGetter() {
           authScheme: ""
       }
     }),
-    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

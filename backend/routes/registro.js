@@ -5,14 +5,12 @@ const {registrar} = require("./../services/registro");
 
 const crear = async (req, res) => {
   try {
-    const registro = JSON.parse(JSON.stringify(req.body));
+    const registro = req.body;
     await registrar(registro);
     console.log(registro);
-    res.render("registro", {
-      message: "Usuario registrado, se envío un mail a tu casilla ",
-    });
+    res.status(201).send({mensaje: "Has sido registrado"})
   } catch (e) {
-    console.log(e);
+    res.status(500).send({mensaje: "Ocurrio un error, no pudimos registrarte."})
   }
 }; 
 
@@ -22,8 +20,9 @@ const verificarEmail = async (req, res, next) => {
     const data = {habilitado: 1, deshabilitado: 0};
     const obj = {data, uid}
     await model.confirmarEmail(obj);
-    res.end();
+    res.status(200).send({mensaje:"Email verificado!"})
   } catch (e) {
+    res.error(e);
     console.log(e);
   };
 };
