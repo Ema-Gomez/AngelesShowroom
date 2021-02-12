@@ -1,9 +1,13 @@
 <div class="" id="fondo" (click)="cerrarNav()"></div>
-<div class="menu-mobile">
-  <fa-icon [icon]="bars" class="menu" (click)="abrirNav()"></fa-icon>
+<div class="menu-mobile" (scroll)="onScroll()">
+  <img src="../../../assets/iconos/menu.svg" class="carrito" (click)="abrirNav()" alt="">
   <img src="../../../assets/imagenes/logo.png" class="logo img-fluid" alt="">
+  <img src="../../../assets/iconos/carro-de-la-compra.svg" class="carrito" alt="">
 </div>
 <nav class="sidenav" id="nav">
+    <div class="d-flex justify-content-end p-4 pt-0 pb-0">
+      <img src="../../../assets/iconos/cerrar.svg" class="carrito" (click)="cerrarNav()" alt="">
+    </div>
     <ul class="">
         <li class="" (click)="cerrarNav()">
           <a class="text-decoration-none" routerLink="/inicio">INICIO</a>

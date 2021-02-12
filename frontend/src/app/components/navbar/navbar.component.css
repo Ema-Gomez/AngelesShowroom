@@ -24,6 +24,7 @@
 
 nav.open {
   transform: translate(0, 0);
+  
 }
 .oscuro{
   background-color: rgba(0, 0, 0, .3);
@@ -38,7 +39,6 @@ nav li {
   padding-bottom: 1em;
   list-style: none;
   text-align: start;
-  border: #424242;
   
 }
 nav li a {
@@ -48,12 +48,20 @@ nav li a {
   color: #424242;
 }
 .logo{
-  height: 7vh;
+  height: 9vh;
+}
+.carrito{
+  height: 3.5vh;
 }
 ul{
-  padding: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  
+}
+ul li {
+  border-bottom: 1px solid #383636;
 }
 .menu{
-  height: 5vh;
-  width: 5vw;
+  height: 4vh;
+  width: 4vw;
 }

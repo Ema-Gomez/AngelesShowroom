@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,15 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class NavbarComponent implements OnInit{
-  bars = faBars
-  categorias: any
+
+  categorias:any
 
   constructor(private service:NavbarService) {
   }
   
   async ngOnInit() { 
     this.traerCategorias();
+    
   }
 
   async traerCategorias() {
@@ -34,8 +35,6 @@ export class NavbarComponent implements OnInit{
     
   }
 
+
   
-  logout() {
-    localStorage.removeItem("authorization");
-  }
 }
