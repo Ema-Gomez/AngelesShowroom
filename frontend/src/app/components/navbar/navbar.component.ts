@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 
 
@@ -9,8 +9,9 @@ import { NavbarService } from 'src/app/services/navbar.service';
 })
 
 export class NavbarComponent implements OnInit{
-
-  categorias:any
+  claseNav:string;
+  claseFondo:String;
+  categorias:any;
 
   constructor(private service:NavbarService) {
   }
@@ -26,13 +27,12 @@ export class NavbarComponent implements OnInit{
   }
 
   abrirNav(){
-    document.getElementById('nav').classList.toggle("open")
-    document.getElementById('fondo').classList.toggle('oscuro')
+    this.claseNav = "open"
+    this.claseFondo = "oscuro"
   }
   cerrarNav(){
-    document.getElementById('nav').classList.remove('open')
-    document.getElementById('fondo').classList.remove('oscuro')
-    
+    this.claseNav = ""
+    this.claseFondo = ""  
   }
 
 

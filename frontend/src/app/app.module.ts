@@ -24,6 +24,7 @@ import { ProductoComponent } from './components/producto/producto.component';
 import {EliminarProductoComponent} from './components/eliminar-producto/eliminar-producto.component';
 import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
 import { NavComponent } from './components/nav/nav.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 
 
@@ -49,7 +50,8 @@ export function tokenGetter() {
     ProductoComponent,
     EliminarProductoComponent,
     ProductosCategoriaComponent,
-    NavComponent
+    NavComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
