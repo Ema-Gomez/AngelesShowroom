@@ -1,0 +1,81 @@
+@media (max-width: 991.98px){
+    .contenedor{
+        padding: 0vh 10vw 0vh 10vw;
+    }
+    img{
+        height: 60vh;
+        width: 100%;
+    }
+    .botonCarrito{
+        padding-top: 5px;
+        margin-top: 4px;
+        width: 1.8vw;
+        transition: 0.5s;
+    }
+    .botonComprar{
+        background-color: black;
+        color: white;
+        margin-bottom: 5px;
+        border: none;
+        height: 5vh;
+        width: 70%;
+        letter-spacing: 0.1rem ;
+        justify-self: flex-end;
+      
+    }
+    .botonComprar:hover{
+        filter: opacity(.7);
+    }
+    span{
+        font-size: 1rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+    .cajaInfo{
+        padding: 0.5vh 0vw 0.5vh 0vw;
+    }
+    .botones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (min-width: 992px) {
+    .contenedor{
+        padding: 0vh 15vw 0vh 15vw;
+    }
+    img{
+        height: 80vh;
+        width: 85%;
+    }
+    .botonCarrito{
+        padding-top: 5px;
+        margin-top: 4px;
+        width: 1.8vw;
+        transition: 0.5s;
+    }
+    .botonComprar{
+        background-color: black;
+        color: white;
+        margin-bottom: 5px;
+        border: none;
+        height: 5vh;
+        width: 70%;
+        letter-spacing: 0.1rem ;
+        justify-self: flex-end;
+      
+    }
+    .botonComprar:hover{
+        filter: opacity(.7);
+    }
+    span{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 3rem;
+    }
+    .cajaInfo{
+        padding: 3vh 0vw 3vh 0vw;
+    }
+}

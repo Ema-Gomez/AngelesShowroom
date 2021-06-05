@@ -1,5 +1,8 @@
+import { AutorizacionGuard } from './../../guards/autorizacion.guard';
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,13 @@ export class LoginComponent implements OnInit {
   nombreUsuario:string;
   password:string;
 
-  constructor(private service: UsuariosService) { }
+
+  constructor(
+    private service: UsuariosService,
+    private route:ActivatedRoute, 
+    private router: Router, 
+    private guard:AutorizacionGuard
+    ) {}
 
   ngOnInit(): void {
   }
@@ -20,15 +29,9 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.nombreUsuario,
       password: this.password
     }  
-    let token:any = await this.service.login("login/in", usuario);    
-    console.log(token);
-    if(token){
-      window.location.href = '/admin/inicio'
-    } else {
-      window.location.href = '/registro'
-    }
-    
-    return localStorage.setItem("authorization", token);      
+    let dataUsuario:any = await this.service.login("login/in", usuario);
+    console.log(dataUsuario)
+    this.guard.canActivate(this.route.snapshot, this.router.routerState.snapshot)
   }
 
   

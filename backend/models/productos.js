@@ -1,3 +1,4 @@
+const { response } = require("express");
 const pool = require("./../utils/bd");
 const T_PRODUCTOS = "productos";
 const T_CATEGORIAS = "categorias";
@@ -24,10 +25,18 @@ pool
   .catch((e) => console.log(e))
 
 //Obtener producto segun ID
-const traerPorId = async (id) => {
-    const query = "SELECT p.id, c.nombreCategoria AS categoria, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ? AND p.id = ?"
-    const params = [T_PRODUCTOS, T_CATEGORIAS, 1, id];
-    return await pool.query(query, params);
+const traerPorId = (id) =>
+pool  
+  .query("SELECT i.id AS idImagen, i.idProducto, i.uid AS imagen, p.idCategorias, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS i JOIN ?? AS p ON i.idProducto = p.id WHERE p.habilitado = ? AND p.id = ?", [T_PRODUCTOS_IMAGENES, T_PRODUCTOS, 1, id])
+  .then((response) => response)
+  .catch((e) => console.log(e))
+
+
+//Obtener producto segun nombre
+const traerPorNombre = async (nombreProducto) => {
+  const query = "SELECT p.id, c.nombreCategoria AS categoria, p.nombre, p.descripcion, p.precio, p.talle, p.color FROM ?? AS p JOIN ?? AS c ON p.idCategorias = c.id WHERE p.habilitado = ? AND p.nombre = ?"
+  const params = [T_PRODUCTOS, T_CATEGORIAS, 1, id];
+  return await pool.query(query, params);
 };
 
 //Modificar producto

@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-xl-6 col-md-12 col-12">
+            <div id="containerForm">
+                <h1>&bull; Datos de compra &bull;</h1>
+                <div class="underline">
+                </div>
+                <div class="icon_wrapper">
+                </div>
+                <form action="#" method="post" id="contact_form">
+                    <div class="name">
+                        <label for="name"></label>
+                        <input type="text" placeholder="Nombre" name="name" id="name_input" required>
+                    </div>
+                    <div class="email">
+                        <label for="email"></label>
+                        <input type="email" placeholder="Email" name="email" id="mail_input" required>
+                    </div>
+                    <div class="name">
+                        <label for="DNI"></label>
+                        <input type="text" placeholder="DNI" name="DNI" id="DNI_input" required>
+                    </div>
+                    <div class="email">
+                        <label for="email"></label>
+                        <input type="text" placeholder="Telefono" name="telefono" id="telefono_input" required>
+                    </div>
+                    <div class="telephone">
+                        <label for="Direccion"></label>
+                        <input type="text" placeholder="Direccion" name="direccion" id="direccion_input" required>
+                    </div>
+                    <div class="subject">
+                        <label for="provincia"></label>
+                        <select placeholder="provincia" name="provincia" id="provincia" required (change)="traerLocalidades($event)">
+                            <option hidden selected>Provincia</option>
+                            <option *ngFor="let provincia of provincias" value="{{provincia.nombre}}">{{provincia.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="subject">
+                        <label for="localidad"></label>
+                        <select placeholder="localidad" name="localidad" id="localidad" required>
+                            <option hidden selected>Localidad</option>
+                            <option *ngFor="let localidad of localidades">{{localidad.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="subject">
+                        <label for="entrega"></label>
+                        <select placeholder="entrega" name="entrega" id="entrega" required>
+                            <option hidden selected>Retiro/envio</option>
+                            <option>Retiro en tienda</option>
+                            <option>Envio a mi domicilio</option>
+                        </select>
+                    </div>
+                </form><!-- // End form -->
+            </div><!-- // End #container -->
+        </div>
+
+        <div class="col-lg-2 col-xl-2"></div>
+
+        <div class="col-lg-4 col-xl-4 col-md-12 col-12">
+            <div class="contenedorProductos">
+                <div class="row productos" *ngFor = "let item of items">
+                    <img src="http://localhost:3000/images/{{item.imagen}}" alt="" class="col-3 col-sm-3 col-md-3 col-lg-3 imgProductos">
+                    <div class="detallesProducto col-6 col-sm-6 col-md-6 col-lg-6">
+                        <div>{{item.nombre}}</div>
+                        <div>${{item.precio}}</div>
+                        <div>
+                            <span class="cantidad">
+                                {{item.cantidad}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="subtotal col-3 col-sm-6 col-md-3 col-lg-3">
+                        <div>${{item.subtotal}}</div>
+                        <img src="../../../assets/iconos/basura.png" class="iconoBasura" alt="" (click)="eliminarProducto(item)">
+                    </div>
+                </div>
+                <div class="contenedorTotal">
+                    <div id="total">
+                        <span>PRECIO TOTAL: ${{precioTotal}}</span>
+                        <form id="boton-checkout"></form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

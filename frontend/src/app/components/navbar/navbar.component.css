@@ -1,67 +1,253 @@
-.menu-mobile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 13vh;
-  padding:0 2em;
-  background-color: white;
-  box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.14);
+/* Clases para resolucion movil */
+
+@media (max-width: 991.98px) { 
+  .ocultoPhon{
+      display: none;
+  }
+  .menu-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 13vh;
+    padding:0 2em;
+    background-color: white;
+    box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.01);
+    z-index: 98;
+    position: sticky;
+    top: 0px;
+  }
+  .sidenav{
+    z-index: 100;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translate(-420px, 0);
+    transition: transform .3s ease;
+  }
+  .carritoContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .carrito{
+    z-index: 100;
+    width: 90vw;
+    height: 93vh;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    background-color: white;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translate(90vw, 0);
+    transition: transform .3s ease;
+  }
+  nav li {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    list-style: none;
+    text-align: start;
+    
+  }
+  nav li a {
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+    color: #424242;
+  }
+  input{
+    display: none;
+  }
+  label{
+    display: block;
+    background: none;
+    padding: 1em;
+    font-size: 1em;
+    color: #424242;
+    border-bottom: 1px solid black;
+  }
+  #desplegable{
+    background: none;
+    border: none;
+    padding: 1em;
+    font-size: 1em;
+    color: #424242;
+  }
+  #desplegable ~ ul {
+    display: none;
+    font-size: 0.8em;
+  }
+  #desplegable:checked ~ ul {
+    display: block;
+  }
+
+  .logo{
+    height: 9vh;
+  }
+  .carritoLogo{
+    height: 3.5vh;
+  }
+  ul{
+    padding-left: 5px;
+    padding-right: 5px;
+    
+  }
+  ul li {
+    border-bottom: 1px solid #383636;
+  }
+  .menu{
+    height: 4vh;
+    width: 4vw;
+  }
+  .itemsTotales{
+    color: white;
+    background-color: black;
+    width: 40px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+  }
+  .oscuro{
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
 }
-.sidenav{
-  z-index: 100;
-  width: 300px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  background-color: white;
-  padding-top: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  transform: translate(-300px, 0);
-  transition: transform .3s ease;
+
+
+/* Clases para resolucion escritorio */
+
+@media (min-width: 992px) {
+  .ocultoDeskt{
+      display: none;
+  }
+
+  .header{
+    padding-left: 10vw;
+    padding-right: 10vw;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .carrito{
+    z-index: 100;
+    width: 450px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translate(450px, 0);
+    transition: transform .3s ease;
+  }
+  .menuNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    font-size: 0.7rem;
+    border: 1px solid grey;
+    border-left: none;
+    border-right: none;
+    padding-left: 15vw;
+    padding-right: 15vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+  .menuNav li{
+    list-style: none;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+
+  .menuNav li ul{
+    display: none;
+    border: 1px solid grey;
+    padding: 0px 0px 0px 0px;
+  }
+  
+  #desplegable:hover > ul {
+    display: block;
+    position: absolute;
+    z-index: 100;
+  }
+  
+  .menuNav li ul li{
+    border-bottom: 1px solid grey;
+    background-color: white;
+    padding: 2px 2px 2px 2px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .logoContainer{
+    display: flex;
+    justify-content: center;
+    padding: 5vh;
+  }
+  .logo{
+    height: 12vh;
+  }
+  .botonCarrito{
+    border: 0;
+    background:none;
+  }
+  .carritoLogo{
+    height: 3.5vh;
+    transition: 0.5s;
+  }
+  .carritoContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .carritoLogo:hover{
+    filter: opacity(.5);
+  }
+  .iconoCerrar{
+    position: fixed;
+  }
+  .itemsTotales{
+    color: white;
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+  }
+  .oscuro{
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
 }
 
 nav.open {
-  transform: translate(0, 0);
-  
+  transform: translate(0, 0); 
 }
-.oscuro{
-  background-color: rgba(0, 0, 0, .3);
-  z-index: 99;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: block;
-}
-nav li {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  list-style: none;
-  text-align: start;
-  
-}
-nav li a {
-  text-align: center;
-  padding: 1em;
-  font-size: 0.8em;
-  color: #424242;
-}
-.logo{
-  height: 9vh;
-}
-.carrito{
-  height: 3.5vh;
-}
-ul{
-  padding-left: 5px;
-  padding-right: 5px;
-  
-}
-ul li {
-  border-bottom: 1px solid #383636;
-}
-.menu{
-  height: 4vh;
-  width: 4vw;
+.carrito.abierto{
+  transform: translate(0, 0);       
 }

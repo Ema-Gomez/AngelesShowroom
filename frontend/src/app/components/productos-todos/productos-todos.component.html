@@ -1,0 +1,37 @@
+<!-- vista productos hasta 992px--> 
+<div class="container ocultoDeskt">  
+    <div class="row mt-2 mb-1">
+        <div class="col-6 col-md-6"  *ngFor="let producto of productos">
+            <div class="card border border-0 rounded-0 mb-2">
+                <img src="http://localhost:3000/images/{{producto.imagen}}" class="imagenCard img-fluid" alt="...">
+                <button (click)="agregarProducto(producto)">
+                    <img src="../../../assets/iconos/carro-de-la-compra (1).png" class="botonCarrito" alt="">
+                </button>
+                <div class="card-body text-center">
+                    <h5 class="card-title cardText text-uppercase text-center">{{producto.nombre}}</h5>
+                    <p class="card-text cardText text-center">$ {{producto.precio}}</p>
+                    <a class="text-decoration-none text-dark" routerLink="{{producto.nombreCategoria}}/{{producto.idProducto}}">VER MAS</a>
+                </div>
+            </div>
+        </div>             
+    </div>
+</div> 
+
+<!-- Vista productos a partir de 992px -->
+<div class="container ocultoPhon"> 
+    <div class="row pb-2">
+        <div class="col-sm-3 col-lg-3 col-xl-3 pt-3 pb-3"  *ngFor="let producto of productos">
+            <div class="card border-0 shadow-sm rounded-0 mb-2 ">
+                <img src="http://localhost:3000/images/{{producto.imagen}}" class="imagenCard img-fluid" alt="...">
+                <button (click)="agregarProducto(producto)">
+                    <img src="../../../assets/iconos/carro-de-la-compra (1).png" class="botonCarrito" alt="">
+                </button>
+                <div class="card-body pt-2 pb-2">
+                    <p class="card-title cardText text-uppercase text-center mb-0">{{producto.nombre}}</p>
+                    <p class="card-text cardText text-center">$ {{producto.precio}}</p>
+                    <a class="text-decoration-none text-dark align-self-center" routerLink="{{producto.nombreCategoria}}/{{producto.idProducto}}">VER MAS</a>
+                </div>
+            </div>
+        </div>
+    </div>                     
+</div>

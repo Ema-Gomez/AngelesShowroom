@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class EliminarProductoComponent implements OnInit {
   id:string = "";
-  constructor(private service:AdminService, private route:ActivatedRoute) {
+  constructor(private service:AdminService, private router:Router, private route:ActivatedRoute) {
     this.id = this.route.snapshot.params.id
     console.log(this.id)
   }
@@ -21,7 +21,7 @@ export class EliminarProductoComponent implements OnInit {
   
   async eliminarProductos() {
     await this.service.delete(`admin/productos/${this.id}/eliminar`);
-    window.location.href = '/admin/inicio'  
+    this.router.navigate(['/admin','/inicio']) 
   }
 
 }

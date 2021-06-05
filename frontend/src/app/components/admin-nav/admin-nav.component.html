@@ -1,17 +1,47 @@
-<div class="fullScreen customNav">
-    <ul class="nav flex-column customNav  pt-5">
-        <li class="nav-item mt-3 mb-3">
-            <a class="nav-link text-white" routerLink="/admin/categorias" >Categorias</a>
-        </li>
-        <li class="nav-item mt-3 mb-3">
-            <a class="nav-link text-white" routerLink="/admin/inicio">Productos</a>
-        </li>
-        <li class="nav-item mt-3 mb-3">
-            <a class="nav-link text-white" href="#">Ventas</a>
-        </li>
-        <li class="nav-item mt-3 mb-3">
-            <a class="nav-link text-white" href="#">Pedidos</a>
-        </li>
-    </ul>
-    <button class="btn btn-light ml-2 mt-5" (click)="salir()">Cerrar sesion</button>
+<!-- Nav para escritorio -->
+    <div class="fullScreen customNav ocultarMovil">
+        <ul class="nav flex-column customNav  pt-5">
+            <li class="nav-item pt-3 pb-3">
+                <a class="nav-link text-white" routerLink="/admin/panel/categorias" >Categorias</a>
+            </li>
+            <li class="nav-item pt-3 pb-3">
+                <a class="nav-link text-white" routerLink="/admin/panel/productos">Productos</a>
+            </li>
+            <li class="nav-item pt-3 pb-3">
+                <a class="nav-link text-white" routerLink="/admin/panel/ventas">Ventas</a>
+            </li>
+            <li class="nav-item pt-3 pb-3">
+                <a class="nav-link text-white" routerLink="/admin/panel/pedidos" >Pedidos</a>
+            </li>
+            <li class="nav-item pt-3 pb-3" (click)="salir()">
+                <a class="nav-link text-white">Salir</a>
+            </li>
+        </ul>
+    </div>
+
+<!-- Nav para movil -->
+<div class="ocultarEscritorio">
+<div  id="fondo" [ngClass]="claseFondo" (click)="cerrarNav()"></div>
+<div class="menu-mobile">
+  <img src="../../../assets/iconos/menu.svg" class="carrito" (click)="abrirNav()" alt="">
+  <img src="../../../assets/imagenes/logo.png" class="logo img-fluid" alt="">
+</div>
+<nav class="sidenav" [ngClass]="claseNav" id="nav">
+  <div class="d-flex justify-content-end p-4 pt-0 pb-0">
+    <img src="../../../assets/iconos/cerrar.svg" class="carrito" (click)="cerrarNav()" alt="">
+  </div>
+  <ul class="">
+    <li class="" (click)="cerrarNav()">
+      <a class="text-decoration-none" routerLink="/panel/inicio">INICIO</a>
+    </li>
+    <li class="" (click)="cerrarNav()">
+      <a class="text-decoration-none" routerLink="/admin/panel/productos" id="navbarDropdown">
+        TODOS LOS PRODUCTOS
+      </a>
+    </li>
+    <li (click)="cerrarNav()">
+      <a class="text-uppercase text-decoration-none"></a>
+    </li>
+  </ul>
+</nav>
 </div>

@@ -1,12 +1,15 @@
 .footer{
-    background-color:white;
+    height: 20vh;
+    background-color:black;
     padding-top: 3vh;
     padding-bottom: 3vh;
-    }
+}
 
 .brand {
     font-family: 'Pacifico', cursive;
     font-size: 2rem;
+    color: white;
+    text-decoration: none;
 }
 .instaLogo{
     height: 6vh;

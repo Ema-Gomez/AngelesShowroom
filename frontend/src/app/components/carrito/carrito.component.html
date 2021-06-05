@@ -1,1 +1,41 @@
-<p>carrito works!</p>
+<div class="contenedorPrincipal">
+    <div class="encabezado">
+        <h5>TU CARRITO DE COMPRAS</h5>
+        <img src="../../../assets/iconos/cerrar.svg" alt="" class="icono" (click)="cerrarCarrito()">
+    </div>
+    <div class="subEncabezado">
+        <span>PRODUCTO</span>
+        <span>SUBTOTAL</span>
+    </div>
+    
+    <div class="contenedorProductos">
+        <div class="row productos" *ngFor = "let item of items">
+            <img src="http://localhost:3000/images/{{item.imagen}}" alt="" class="col-3 col-sm-3 col-md-3 col-lg-3 imgProductos">
+            <div class="detallesProducto col-6 col-sm-6 col-md-6 col-lg-6">
+                <div>{{item.nombre}}</div>
+                <div>${{item.precio}}</div>
+                <div>
+                    <button class="botonCant" (click)="disminuirProducto(item)">-</button>
+                    <span class="cantidad">
+                        {{item.cantidad}}
+                    </span>
+                    <button class="botonCant" (click)="aumentarProducto(item)">+</button>
+                </div>
+            </div>
+            <div class="subtotal col-3 col-sm-6 col-md-3 col-lg-3">
+                <div>${{item.subtotal}}</div>
+                <img src="../../../assets/iconos/basura.png" class="iconoBasura" alt="" (click)="eliminarProducto(item)">
+            </div>
+        </div>
+    </div> 
+    <div class="contenedorTotal">
+        <div id="total">
+            <span>PRECIO TOTAL: ${{precioTotal}}</span>
+        </div>
+        <button class="botonComprar">
+            <span>
+                <a routerLink="/checkout">INICIAR COMPRA</a>
+            </span>
+        </button>             
+    </div>
+</div>

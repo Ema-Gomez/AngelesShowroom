@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class FooterComponent implements OnInit {
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro", "/admin/inicio"]
+  baseUrl = ["/login", "/admin","/registro", "/admin/inicio","/admin/productos"]
   activeUrl: string;
 
   constructor(private router:Router) { }
@@ -26,13 +26,8 @@ export class FooterComponent implements OnInit {
   }
 
   ocultar (activeUrl) {
-    this.baseUrl.forEach(value =>{
-      if (activeUrl === value) {
-        console.log(activeUrl) 
-        this.mostrar= false        
-      } else {
-        console.log("Footer permitido!")
-      }      
-    }) 
-  }
+    if (this.baseUrl.includes(activeUrl)) {
+      this.mostrar= false        
+    }    
+  } 
 }

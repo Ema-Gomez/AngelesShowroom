@@ -1,13 +1,17 @@
-<div style="height: 15vh;"></div>
+
 <!-- vista productos hasta 992px--> 
 <div class="container ocultoDeskt">  
     <div class="row pl-1 pr-1">
         <div class="col-6 col-md-6 p-1"  *ngFor="let producto of productos">
             <div class="card border border-0 rounded-0 mb-2">
                 <img src="http://localhost:3000/images/{{producto.imagen}}" class="imagenCard img-fluid" alt="...">
-                <div class="card-body">
+                <button (click)="agregarProducto(producto)">
+                    <img src="../../../assets/iconos/carro-de-la-compra (1).png" class="botonCarrito" alt="">
+                </button>
+                <div class="card-body text-center">
                     <h5 class="card-title cardText text-uppercase text-center">{{producto.nombre}}</h5>
                     <p class="card-text cardText text-center">$ {{producto.precio}}</p>
+                    <a class="text-decoration-none text-dark" routerLink="{{producto.idProducto}}">VER MAS</a>
                 </div>
             </div>
         </div>             
@@ -19,11 +23,14 @@
     <div class="row pl-1 pr-1">
         <div class="col-lg-3 col-xl-3 p-1"  *ngFor="let producto of productos">
             <div class="card border border-0 rounded-0 mb-2">
-    
-                        <img src="http://localhost:3000/images/{{producto.imagen}}" class="imagenCard img-fluid" alt="...">
-                <div class="card-body">
+                <img src="http://localhost:3000/images/{{producto.imagen}}" class="imagenCard img-fluid" alt="...">
+                <button (click)="agregarProducto(producto)">
+                    <img src="../../../assets/iconos/carro-de-la-compra (1).png" class="botonCarrito" alt="">
+                </button>
+                <div class="card-body text-center">
                     <h5 class="card-title cardText text-uppercase text-center">{{producto.nombre}}</h5>
                     <p class="card-text cardText text-center">$ {{producto.precio}}</p>
+                    <a class="text-decoration-none text-dark" routerLink="{{producto.idProducto}}">VER MAS</a>
                 </div>
             </div>
         </div>              

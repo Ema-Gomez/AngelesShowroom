@@ -9,3 +9,6 @@
 .fullScreen{
     height: 100vh;
 }
+.sidenav{
+    position: fixed;
+}

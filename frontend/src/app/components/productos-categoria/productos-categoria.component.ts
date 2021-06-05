@@ -1,6 +1,8 @@
+import { CarritoService } from './../../services/carrito.service';
+import { iProductos, iItem } from './../../models/productos.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -10,20 +12,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductosCategoriaComponent implements OnInit {
   nombreCategoria:string;
-  productos: any;
+  productos:iProductos;
 
-  constructor(private service: ProductosService, private route:ActivatedRoute) {
-    this.nombreCategoria = this.route.snapshot.params.nombreCategoria
-    console.log(this.nombreCategoria)
+  constructor(private service: ProductosService, private route:ActivatedRoute, private carritoService:CarritoService) {
   }
-
+  
   async ngOnInit() {
-    this.obtenerProductos();
+    this.route.paramMap.subscribe((params:ParamMap) => {
+    this.nombreCategoria = params.get('nombreCategoria');
+    console.log(this.nombreCategoria)
+    this.obtenerProductos()
+    })
   }
    
   async obtenerProductos() {
     const productos:any = await this.service.obtenerProductos(`productos/${this.nombreCategoria}`);
     this.productos = productos;
     console.log(productos);
+  }
+  agregarProducto(producto:iItem){
+    this.carritoService.agregarAlCarrito(producto) 
   }
 }

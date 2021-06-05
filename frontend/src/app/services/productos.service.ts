@@ -8,4 +8,10 @@ export class ProductosService extends BaseService {
   async obtenerProductos(url:string) {
     return this.get(url)
   }
+
+  async obtenerProducto(url:string){
+    return this.get(url)
+  }
+
+
 }

@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require("dotenv");
-const cors = require('cors')
+const cors = require('cors');
 const {usuarioToken, adminToken} = require('./middlewares/auth');
 dotenv.config();
 
@@ -12,6 +12,7 @@ const loginRouter = require('./routes/login');
 const productosRouter = require('./routes/productos');
 const registroRouter = require('./routes/registro');
 const categoriasRouter = require('./routes/categorias');
+const pagosRouter = require('./routes/pagos')
 const adminProductosRouter = require('./routes/admin/productos');
 
 var app = express();
@@ -27,11 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-
+//Rutas usuarios
 app.use('/login', loginRouter);
 app.use('/productos', productosRouter);
 app.use('/registro', registroRouter);
 app.use('/categorias', categoriasRouter);
+app.use('/pagos', pagosRouter);
 
 //Rutas admin
 app.use('/admin', adminToken, adminProductosRouter);

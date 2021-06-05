@@ -21,7 +21,7 @@ export class EditarProductoComponent implements OnInit {
     console.log(this.id)
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
   }
 

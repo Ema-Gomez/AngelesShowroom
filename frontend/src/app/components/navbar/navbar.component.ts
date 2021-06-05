@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductosCategoriaComponent } from './../productos-categoria/productos-categoria.component';
+import { CarritoService } from './../../services/carrito.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { isPlatformBrowser } from '@angular/common';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -9,14 +13,36 @@ import { NavbarService } from 'src/app/services/navbar.service';
 })
 
 export class NavbarComponent implements OnInit{
+
+  mostrar:boolean = true
+  baseUrl = ["/login", "/admin","/registro","/admin/inicio","/admin/productos","/checkout"]
+  activeUrl: any;
   claseNav:string;
   claseFondo:String;
+  claseCarrito:string;
   categorias:any;
+  itemsTotales:number = 0;
 
-  constructor(private service:NavbarService) {
+  constructor(private service:NavbarService, private router:Router, private carritoService:CarritoService) {
   }
+
   
-  async ngOnInit() { 
+  async ngOnInit() {
+    if (isPlatformBrowser) {
+      this.router.events
+      .subscribe(() => {
+          this.activeUrl = this.router.routerState.snapshot.url;
+          this.ocultar(this.activeUrl);
+          console.log(this.activeUrl)
+        })
+    }
+
+    this.carritoService.carrito$.subscribe(itemsCarrito => {
+      if(itemsCarrito){
+        this.itemsTotales = itemsCarrito.length;
+      }
+    })
+    
     this.traerCategorias();
     
   }
@@ -34,7 +60,23 @@ export class NavbarComponent implements OnInit{
     this.claseNav = ""
     this.claseFondo = ""  
   }
+  abrirCarrito(){
+    this.claseCarrito = "abierto"
+    this.claseFondo = "oscuro"
+  
+  }
+  cerrarCarrito(){
+    this.claseCarrito = ""
+    this.claseFondo = ""
+  
+  }
+
+  ocultar (activeUrl) {
+      if (this.baseUrl.includes(activeUrl)) {
+        this.mostrar= false      
+      }    
+    } 
+  }
 
 
   
-}

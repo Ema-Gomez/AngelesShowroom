@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,14 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-nav.component.css']
 })
 export class AdminNavComponent implements OnInit {
-
-  constructor() { }
+  claseNav:string;
+  claseFondo:String;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   
+  
   salir() {
     localStorage.removeItem("authorization");
-    window.location.href = '/admin'
+    this.router.navigate(['/admin'])
   } 
+
+  abrirNav(){
+    this.claseNav = "open"
+    this.claseFondo = "oscuro"
+  }
+  cerrarNav(){
+    this.claseNav = ""
+    this.claseFondo = ""  
+  }
+
 }

@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro","/admin/inicio"]
+  baseUrl = ["/login", "/admin","/registro","/admin/inicio","/admin/productos", "/checkout"]
   activeUrl: string;
   
   
@@ -22,20 +22,16 @@ export class HeaderComponent implements OnInit {
       this.router.events
       .subscribe(() => {
           this.activeUrl = this.router.routerState.snapshot.url;
-          console.log(this.activeUrl)
           this.ocultar(this.activeUrl);
-      })
+          console.log(this.activeUrl)
+        })
     }
   }
 
-  ocultar (activeUrl) {
-    this.baseUrl.forEach(value =>{
-      if (activeUrl === value) {
-        console.log(activeUrl) 
-        this.mostrar= false        
-      } else {
-        console.log("Header permitido!")
-      }      
-    }) 
-  }
+  ocultar (activeUrl:string) {
+    if (this.baseUrl.includes(activeUrl)) {
+      this.mostrar= false        
+    }    
+  } 
 }
+

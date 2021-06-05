@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,18 +6,9 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  productos:any;
 
-  constructor(private service: AdminService) { }
+  constructor() { }
 
-  async ngOnInit() {
-    this.traerProductos();
-  }
-
-  async traerProductos() {
-    const productos:any = await this.service.adminProductos("admin/productos");
-    this.productos = productos;
-    console.log(productos);
-  }
+  ngOnInit() {}
 }
 

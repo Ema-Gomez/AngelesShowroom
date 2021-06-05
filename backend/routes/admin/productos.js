@@ -10,8 +10,9 @@ const service = require("../../services/producto");
 //Traer productos
 const traerTodos = async (req, res) => {
     try{
-        const productos = await model.traerProductoImagen();
+        const productos = await model.traerProductosImagenes();
         res.json(productos);
+        console.log(productos)
     } catch (e) {
         res.sendStatus(403);
     };

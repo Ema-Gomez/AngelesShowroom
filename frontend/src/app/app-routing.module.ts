@@ -1,11 +1,15 @@
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ProductosTodosComponent } from './components/productos-todos/productos-todos.component';
+import { ProductoComponent } from './components/producto/producto.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AutorizacionGuard } from './guards/autorizacion.guard';
+import { AdminProductosComponent } from './components/admin-productos/admin-productos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {InicioComponent} from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
-import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
-import { RegistroComponent } from './components/registro/registro.component';
 import {AdminComponent} from './components/admin/admin.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
@@ -13,19 +17,29 @@ import { EliminarProductoComponent } from './components/eliminar-producto/elimin
 
 
 
+
 const routes: Routes = [
-  {path: 'registro', component: RegistroComponent},
-  {path: 'admin', component: LoginComponent},
-  {path: 'admin/inicio', component: AdminComponent},
+  {path: 'admin', component: AdminLoginComponent}, 
+  {path:'admin/panel', canActivate: [AutorizacionGuard], component: AdminComponent,
+    children: [
+      {path: 'nuevo', component:NuevoProductoComponent},
+      {path: 'productos', component: AdminProductosComponent},
+      {path: 'productos/editar/:id', component: EditarProductoComponent},
+      {path: 'productos/eliminar/:id', component:EliminarProductoComponent},
+    ]
+  },
   {path: 'inicio', component:InicioComponent},
-  {path: 'productos', component: ProductosComponent},
-  {path: 'productos/:nombreCategoria', component: ProductosCategoriaComponent},
-  {path: 'mis_datos', component: MisDatosComponent},
+  {path: 'productos', component: ProductosComponent,
+    children:[
+      {path: 'todos', component: ProductosTodosComponent},
+      {path: 'todos/:nombreCategoria/:idProducto', component:ProductoComponent},
+      {path: ':nombreCategoria', component: ProductosCategoriaComponent},
+      {path: ':nombreCategoria/:idProducto', component: ProductoComponent}
+    ]
+  },
   {path: 'login', component: LoginComponent},
-  {path: 'admin/nuevo_producto', component:NuevoProductoComponent},
-  {path: 'admin/inicio/eliminar/:id', component:EliminarProductoComponent },
   {path: "", redirectTo:"inicio", pathMatch: 'full'},
-  {path: 'admin/inicio/editar/:id', component: EditarProductoComponent}
+  {path:"checkout", component: CheckoutComponent}
 ];
 
 @NgModule({

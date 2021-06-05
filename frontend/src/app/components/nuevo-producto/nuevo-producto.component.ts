@@ -1,5 +1,6 @@
 import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { iProductos } from './../../models/productos.model';
 
 @Component({
   selector: 'app-nuevo-producto',

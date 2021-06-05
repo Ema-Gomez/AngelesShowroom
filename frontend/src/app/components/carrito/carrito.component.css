@@ -1,0 +1,175 @@
+@media (max-width: 991.98px) {
+  .encabezado{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .subEncabezado{
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .imgProductos{
+    height: 15vh;
+    width: 25%;
+  }
+  .icono{
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    margin-top: 3px;
+  }
+  .iconoBasura{
+    width: 20px;
+    height: 20px;
+  }
+  .contenedorPrincipal{
+    padding: 10px 10px 5px 10px;
+  }
+  .contenedorProductos{
+    height: 55vh;
+    overflow-y: auto;
+  }
+  .productos{
+    padding-top: 7px;
+    padding-bottom: 7px ;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  #total{
+    display: inline;
+  }
+  .contenedorTotal{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 0%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+  }
+  .botonComprar{
+    background-color: black;
+    color: white;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    border: none;
+    width: 40%;
+    letter-spacing: 0.1rem ;
+  }
+  .detallesProducto{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    justify-content: space-around;
+  }
+  .botonCant{
+    background: none;
+    border: 0;
+  }
+  .cantidad{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2px 2px 2px 2px;
+  }
+  .subtotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .tipoPago{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+@media (min-width: 992px) {
+  .imgProductos{
+    height: 15vh;
+    width: 20%;
+  }
+  .encabezado{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .subEncabezado{
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .icono{
+    width: 15px;
+    height: 15px;
+    margin: 5px 10px 0px 0px;
+  }
+  .iconoBasura{
+    width: 20px;
+    height: 20px;
+    
+  }
+  .contenedorPrincipal{
+    height: 100vh;
+    padding: 10px 10px 5px 10px;
+  }
+  .contenedorProductos{
+    height: 80vh;
+    overflow-y: auto;
+  }
+  .contenedorTotal{
+    width: 100%;
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+  }
+  .productos{
+    padding-top: 7px;
+    padding-bottom: 7px ;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  #total{
+    display: inline;
+  }
+  .botonComprar{
+    background-color: black;
+    color: white;
+    margin-bottom: 5px;
+    border: none;
+    width: 40%;
+    letter-spacing: 0.1rem ;
+    justify-self: flex-end;
+  
+  }
+  .detallesProducto{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    justify-content: space-around;
+  }
+  .botonCant{
+    background: none;
+    border: 0;
+  }
+  .cantidad{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2px 2px 2px 2px;
+  }
+  .subtotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .tipoPago{
+    display: block;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}

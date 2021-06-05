@@ -34,8 +34,19 @@ const traerPorID = async (req, res) => {
     };
 };
 
+const traerPorNombre = async (req, res) => {
+    try{
+        const {nombre} = req.params
+        cons [producto] = await model.traerPorNombre(nombre)
+        res.json(producto);
+    } catch(e){
+        req.send(e);
+    }
+}
+
 router.get('/todos', traerTodos);
 router.get('/:categoria', traerPorCat);
-router.get('/:categoria/:id',traerPorID);
+router.get('/:categoria/:id', traerPorID);
+router.get('/:nombre', traerPorNombre)
 
 module.exports = router;

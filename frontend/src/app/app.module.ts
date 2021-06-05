@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http'
 import { JwtModule } from "@auth0/angular-jwt";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import  {  NgxMercadopagoModule  }  from  'ngx-mercadopago'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,9 +12,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegistroComponent } from './components/registro/registro.component';
-import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
-import { CategoriaComponent } from './components/categoria/categoria.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NuevoProductoComponent } from './components/nuevo-producto/nuevo-producto.component';
@@ -23,8 +21,11 @@ import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import {EliminarProductoComponent} from './components/eliminar-producto/eliminar-producto.component';
 import { ProductosCategoriaComponent } from './components/productos-categoria/productos-categoria.component';
-import { NavComponent } from './components/nav/nav.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { AdminProductosComponent } from './components/admin-productos/admin-productos.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { ProductosTodosComponent } from './components/productos-todos/productos-todos.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -38,9 +39,6 @@ export function tokenGetter() {
     FooterComponent,
     ProductosComponent,
     LoginComponent,
-    RegistroComponent,
-    MisDatosComponent,
-    CategoriaComponent,
     AdminComponent,
     InicioComponent,
     NuevoProductoComponent,
@@ -50,8 +48,11 @@ export function tokenGetter() {
     ProductoComponent,
     EliminarProductoComponent,
     ProductosCategoriaComponent,
-    NavComponent,
-    CarritoComponent
+    CarritoComponent,
+    AdminProductosComponent,
+    AdminLoginComponent,
+    ProductosTodosComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,94 @@
 <div  id="fondo" [ngClass]="claseFondo" (click)="cerrarNav()"></div>
-<div class="menu-mobile">
-  <img src="../../../assets/iconos/menu.svg" class="carrito" (click)="abrirNav()" alt="">
-  <img src="../../../assets/imagenes/logo.png" class="logo img-fluid" alt="">
-  <img src="../../../assets/iconos/carro-de-la-compra.svg" class="carrito" alt="">
-</div>
-<nav class="sidenav" [ngClass]="claseNav" id="nav">
-  <div class="d-flex justify-content-end p-4 pt-0 pb-0">
-    <img src="../../../assets/iconos/cerrar.svg" class="carrito" (click)="cerrarNav()" alt="">
+<div  id="fondo" [ngClass]="claseFondo" (click)="cerrarCarrito()"></div>
+<div class="container-fluid p-0"  >
+  
+  <div class="carritoContainer">
+    <app-carrito class="carrito" [ngClass]="claseCarrito" (cambio)="cerrarCarrito()">
+    </app-carrito>
   </div>
-  <ul class="">
-    <li class="" (click)="cerrarNav()">
-      <a class="text-decoration-none" routerLink="/inicio">INICIO</a>
-    </li>
-    <li class="" (click)="cerrarNav()">
-      <a class="text-decoration-none" routerLink="/productos" id="navbarDropdown">
-        TODOS LOS PRODUCTOS
-      </a>
-    </li>
-    <li *ngFor="let categoria of categorias" (click)="cerrarNav()">
-      <a class="text-uppercase text-decoration-none" href="/productos/{{categoria.nombreCategoria}}">{{categoria.nombreCategoria}}</a>
-    </li>
-  </ul>
-</nav>
+
+  <!-- Vista menu y nav hasta 992px -->
+  <div class="ocultoDeskt">
+    <div class="menu-mobile">
+        <img src="../../../assets/iconos/menu.svg" class="carritoLogo" (click)="abrirNav()" alt="" *ngIf="mostrar">
+        <img src="../../../assets/imagenes/logo.png" class="logo img-fluid" alt="">
+        <div class="d-block" *ngIf="mostrar">
+          <img src="../../../assets/iconos/carro-de-la-compra.svg" class="carritoLogo" alt="" (click)="abrirCarrito()">
+          <span class="itemsTotales">{{itemsTotales}}</span>
+        </div>
+    </div>
+    <nav class="sidenav" [ngClass]="claseNav" id="nav">
+      <div class="d-flex justify-content-end p-4 pt-0 pb-0">
+        <img src="../../../assets/iconos/cerrar.svg" class="carritoLogo" (click)="cerrarNav()" alt="">
+      </div>
+      <ul class="">
+        <li class="">
+          <a class="text-decoration-none" (click)="cerrarNav()" routerLink="/inicio">INICIO</a>
+        </li>
+        <input type="checkbox" name="" id="desplegable">
+        <label for="desplegable">PRODUCTOS</label>
+          <ul>
+            <li class="">
+              <a class="text-decoration-none" routerLink="/productos/todos" id="navbarDropdown" (click)="cerrarNav()">
+                TODOS LOS PRODUCTOS
+              </a>
+            </li>
+            <li *ngFor="let categoria of categorias">
+              <a class="text-uppercase text-decoration-none" routerLink="/productos/{{categoria.nombreCategoria}}" (click)="cerrarNav()">{{categoria.nombreCategoria}}</a>
+            </li>
+          </ul>
+        <li>
+          <a class="text-decoration-none" routerLink="" (click)="cerrarNav()">SOBRE NOSOTRAS</a>
+        </li>
+        <li>
+          <a class="text-decoration-none" routerLink="" (click)="cerrarNav()">CONTACTANOS</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- Vista menu y nav a partir de 992px -->
+  <div class="ocultoPhon">
+    <div class="">
+      <div class="row header">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 logoContainer">
+          <img src="../../../assets/imagenes/logo.png" class="logo img-fluid" alt="">
+        </div>
+        <div class="col-lg-4 carritoContainer" *ngIf="mostrar">
+          <button class="botonCarrito">
+            <img class="carritoLogo" src="../../../assets/iconos/carro-de-la-compra.svg" alt="" (click)="abrirCarrito()">
+          </button>
+          <span class="itemsTotales">{{itemsTotales}}</span>
+        </div>
+      </div>
+      <nav class="" id="nav" *ngIf="mostrar">
+        <ul class="menuNav">
+          <li class="" >
+            <a class="text-decoration-none" routerLink="/inicio">INICIO</a>
+          </li>
+          <li id="desplegable"><a href="">PRODUCTOS</a>
+            <ul>
+              <li class="" >
+                <a class="text-decoration-none" routerLink="/productos/todos">
+                  TODOS LOS PRODUCTOS
+                </a>
+              </li>
+              <li *ngFor="let categoria of categorias" >
+                <a class="text-uppercase text-decoration-none" routerLink="/productos/{{categoria.nombreCategoria}}">{{categoria.nombreCategoria}}</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a routerLink="">SOBRE NOSOTRAS</a>
+          </li>
+          <li>
+            <a routerLink="">CONTACTANOS</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
