@@ -1,7 +1,7 @@
 export interface iProductos{
     idProducto:number,
     idImagen:number,
-    idCategoria:number,
+    idCategorias:number,
     nombre:string,
     nombreCategoria:string,
     imagen:string,
@@ -13,10 +13,11 @@ export interface iProductos{
 }
 
 export interface iItem{
-    idProducto:number,
+    idProducto:string,
+    idCategorias:string,
     nombre:string,
-    imagen:string,
     descripcion:string,
+    imagen:string,
     color:string,
     talle:string,
     precio:number,

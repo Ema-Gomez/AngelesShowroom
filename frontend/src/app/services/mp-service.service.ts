@@ -1,4 +1,3 @@
-import { iItem } from './../models/productos.model';
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 
@@ -7,8 +6,8 @@ import { BaseService } from './base.service';
 })
 export class MpServiceService extends BaseService{
   
-  async nuevaOrden(items:Array<iItem>){
-   return this.post("pagos/nuevo", items );
+  async nuevaOrden(preference){
+   return this.post("pagos/nuevo", preference );
   }
 
 }

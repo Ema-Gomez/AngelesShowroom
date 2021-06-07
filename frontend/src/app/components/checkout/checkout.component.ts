@@ -1,9 +1,9 @@
+import { iShipsments, iPayer, iItemMp } from './../../models/preference.model';
 import { ProvinciasService } from './../../services/provincias.service';
 import { MpServiceService } from './../../services/mp-service.service';
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from './../../services/carrito.service';
-import { iProductos, iItem } from './../../models/productos.model';
-import {ElementRef} from '@angular/core'
+import { iItem } from './../../models/productos.model';
 
 
 @Component({
@@ -12,54 +12,57 @@ import {ElementRef} from '@angular/core'
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  items: Array<iItem>;
+  itemsCarrito: Array<iItem>;
   itemsTotales:number = 0;
   precioTotal:number = 0;
   orden:any;
   provincias:any;
   localidades:any;
+  preferenceId:string;
+  item:iItemMp = {
+    id:"",
+    title:"",
+    description:"",
+    picture_url:"",
+    category_id:"",
+    quantity: 0,
+    unit_price: 0
+  }
+  items:Array<iItemMp>;
+  payer:iPayer = {
+    name:"",
+    surname:"",
+    email:"",
+    phone: {
+        area_code:"",
+        number:"",
+    },
+    identification:{
+        type: "DNI", 
+        number:"",
+    },
+    address:{
+        zip_code:"",
+        street_name:"",
+        street_number:0,
+    }
+  };
+  shipsments:iShipsments = {
+    receiver_address:{
+      zip_code:"",
+      state_name:"",
+      city_name:"",
+      street_name:"",
+      street_number:0,
+      floor:"",
+      apartment:""
+    } 
+  };
+
   constructor(private carritoService: CarritoService, private provinciasServices:ProvinciasService, private mpService:MpServiceService) { 
   }
   
   async ngOnInit(){
-    this.obtenerProvincias();
-
-    this.nuevoPago(this.items);
-
-    this.carritoService.carrito$.subscribe(itemsCarrito => {
-      if(itemsCarrito){
-        this.items = itemsCarrito;
-        this.itemsTotales = itemsCarrito.length;
-        this.precioTotal = itemsCarrito.reduce((suma, itemCarrito) => suma + (itemCarrito.precio * itemCarrito.cantidad), 0)
-      }
-    })
-  }
-  async nuevoPago(items){
-    this.orden = await this.mpService.nuevaOrden(items);
-    let {preferenceId} = this.orden
-    if (preferenceId) {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-      script.dataset.preferenceId = preferenceId;
-      let form = document.getElementById("boton-checkout")
-      form.appendChild(script);
-    }
-  }
-
-  async obtenerProvincias(){
-    (await this.provinciasServices.obtenerProvincias()).subscribe((res:any) => {
-      const data = res;
-      this.provincias = data.provincias
-      console.log(this.provincias)
-    })
-  }
-  async traerLocalidades(event:any){
-    let nombreProvincia:any = event.target.value
-    console.log(nombreProvincia);
-    (await this.provinciasServices.obtenerLocalidades(nombreProvincia)).subscribe((res:any) => {
-      const data = res;
-      this.localidades = data.localidades
-    })
+    
   }
 }

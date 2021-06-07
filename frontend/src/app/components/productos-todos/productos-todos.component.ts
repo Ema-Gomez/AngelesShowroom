@@ -25,12 +25,14 @@ export class ProductosTodosComponent implements OnInit {
 
   async obtenerProductos() {                
     const productos:any = await this.service.obtenerProductos("productos/todos");
-    console.log(productos);
-    return this.productos = productos
+    this.productos = productos
+    console.log(this.productos);
+    return this.productos
   }
 
   agregarProducto(producto:iItem){
     this.carritoService.agregarAlCarrito(producto) 
+    console.log(producto)
   }
   
 }

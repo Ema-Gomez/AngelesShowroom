@@ -4,7 +4,9 @@
             <img src="http://localhost:3000/images/{{producto.imagen}}" alt="">
         </div>
         <div class="col-lg-6 col-md-6 col-xl-6 detalles">
-            <h3>{{producto.nombre}}</h3>
+            <div class="cajaInfo">
+                <h3>{{producto.nombre}}</h3>
+            </div>
             <div class="cajaInfo">
                 <span>{{producto.descripcion}}</span>
             </div>
@@ -21,7 +23,7 @@
                 <button class="botonComprar" (click)="agregarProducto(producto)">
                     AGREGAR AL CARRITO
                 </button>
-                <button class="botonComprar" (click)="volverAtras()">VOLVER</button>
+                <button class="botonVolver" (click)="volverAtras()">VOLVER</button>
             </div>
         </div>
     </div>

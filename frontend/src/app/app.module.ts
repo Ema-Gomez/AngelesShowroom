@@ -26,6 +26,8 @@ import { AdminProductosComponent } from './components/admin-productos/admin-prod
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { ProductosTodosComponent } from './components/productos-todos/productos-todos.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
+import { CheckoutPagoComponent } from './components/checkout-pago/checkout-pago.component';
 
 
 
@@ -53,6 +55,8 @@ export function tokenGetter() {
     AdminLoginComponent,
     ProductosTodosComponent,
     CheckoutComponent,
+    CheckoutFormComponent,
+    CheckoutPagoComponent,
   ],
   imports: [
     BrowserModule,
