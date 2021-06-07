@@ -6,35 +6,34 @@ mercadopago.configure({
     access_token : process.env.CREDENCIAL_MP
 })
 
-const nuevoPago = (req, res) => {
-
-    let preference = {
-        items: [{
-			title: "producto",
-			unit_price: 200,
-			quantity: 1,
-		},
-        {
-			title: "producto2",
-			unit_price: 100,
-			quantity: 2,
-		}],
-		back_urls: {
-			"success": "http://localhost:8080/feedback",
-			"failure": "http://localhost:8080/feedback",
-			"pending": "http://localhost:8080/feedback"
-		},
-		auto_return: 'approved',
-	};
-       
-    mercadopago.preferences.create(preference)
-    .then(function(response){
-        console.log(response.body.id);
-        res.json({preferenceId: response.body.id})
-    }).catch(function(error){
-        console.log(error);
-    });
-    
+const nuevoPago = async (req, res) => {
+	try{
+        let {items} = req.body;
+		let {payer} = req.body;
+		let {shipsments} = req.body;
+		
+		console.log("items:",items)
+        let preference = {
+	    	items,
+	    	payer,
+	    	shipsments,
+	    	back_urls: {
+	    		"success": "http://localhost:8080/feedback",
+	    		"failure": "http://localhost:8080/feedback",
+	    		"pending": "http://localhost:8080/feedback"
+	    	},
+	    	auto_return: 'approved',
+	    };
+        mercadopago.preferences.create(preference)
+        .then(function(response){
+            console.log(response.body.id);
+            res.json({preferenceId: response.body.id})
+        }).catch(function(error){
+            console.log(error);
+        });
+	} catch(e){
+		console.log(e);
+	}
 }
 
 const respuestaPago = (req, res) => {
