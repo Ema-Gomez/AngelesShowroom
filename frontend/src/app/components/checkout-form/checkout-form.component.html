@@ -9,35 +9,35 @@
                 </div>
                 <form action="#" method="post" id="contact_form">
                     <div class="inputIzq">
-                        <input type="text" placeholder="Nombre" (ngModel)="payer.name" name="nombre" required>
+                        <input type="text" placeholder="Nombre" [(ngModel)]="payer.name" name="nombre" required>
                     </div>
                     <div class="inputDer">
-                        <input type="text" placeholder="Apellido" (ngModel)="payer.surname" name="apellido" required>
+                        <input type="text" placeholder="Apellido" [(ngModel)]="payer.surname" name="apellido" required>
                     </div>
                     <div class="inputIzq">
-                        <input type="email" placeholder="Email" (ngModel)="payer.email" name="email" required>
+                        <input type="email" placeholder="Email" [(ngModel)]="payer.email" name="email" required>
                     </div>
                     <div class="inputDer">
-                        <input type="text" placeholder="DNI" name="DNI" (ngModel)="payer.identification.number" name="dni" required>
+                        <input type="text" placeholder="DNI" name="DNI" [(ngModel)]="payer.identification.number" name="dni" required>
                     </div>
                     <label for="celular">Telefono:</label>
                     <br>
                     <div id="celular">
                         <div class="inputIzq">
-                            <input type="text" placeholder="Cod. Area" (ngModel)="payer.phone.area_code" name="c.area" required>
+                            <input type="text" placeholder="Cod. Area" [(ngModel)]="payer.phone.area_code" name="c.area" required>
                         </div>
                         <div class="inputDer">
-                            <input type="text" placeholder="Numero" (ngModel)="payer.phone.number" name="numeroTel" required>
+                            <input type="text" placeholder="Numero" [(ngModel)]="payer.phone.number" name="numeroTel" required>
                         </div>
                     </div>
                     <label for="celular">Direccion:</label>
                     <br>
                     <div id="direccion">
                         <div class="inputIzq">
-                            <input type="text" placeholder="Calle" (ngModel)="payer.address.street_name" name="calle" required>
+                            <input type="text" placeholder="Calle" [(ngModel)]="payer.address.street_name" name="calle" required>
                         </div>
                         <div class="inputDer">
-                            <input type="text" placeholder="Numeracion" (ngModel)="payer.address.street_number" name="calleNum" required>
+                            <input type="text" placeholder="Numeracion" [(ngModel)]="payer.address.street_number" name="calleNum" required>
                         </div>
                     </div>
                     <div class="inputLargo">
@@ -53,6 +53,9 @@
                         </select>
                     </div>
                     <div class="inputLargo">
+                        <input type="text" placeholder="codigoPostal" required [(ngModel)]="payer.address.zip_code" name="zip_code">
+                    </div>
+                    <div class="inputLargo">
                         <label for="entrega"></label>
                         <select placeholder="entrega" name="entrega" id="entrega" required>
                             <option hidden selected>Retiro/envio</option>
@@ -60,37 +63,18 @@
                             <option>Envio a mi domicilio</option>
                         </select>
                     </div>
-                    <button type="submit" (click)="crearPreferencia()">Click</button>
+                    <a routerLink="/finalizar_pago">
+                        <button type="submit" (click)="crearPreferencia()">Click</button>
+                    </a>
                 </form><!-- // End form -->
             </div><!-- // End #container -->
         </div>
 
-        <div class="col-lg-2 col-xl-2"></div>
+        <div class="col-lg-2 col-xl-2">
+            <button (click)="mandarPref()">mandar preference</button>
+        </div>
 
         <div class="col-lg-4 col-xl-4 col-md-12 col-12">
-            <div class="contenedorProductos">
-                <div class="row productos" *ngFor = "let item of itemsCarrito">
-                    <img src="http://localhost:3000/images/{{item.imagen}}" alt="" class="col-3 col-sm-3 col-md-3 col-lg-3 imgProductos">
-                    <div class="detallesProducto col-6 col-sm-6 col-md-6 col-lg-6">
-                        <div>{{item.nombre}}</div>
-                        <div>${{item.precio}}</div>
-                        <div>
-                            <span class="cantidad">
-                                {{item.cantidad}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="subtotal col-3 col-sm-6 col-md-3 col-lg-3">
-                        <div>${{item.subtotal}}</div>
-                        <img src="../../../assets/iconos/basura.png" class="iconoBasura" alt="" (click)="eliminarProducto(item)">
-                    </div>
-                </div>
-                <div class="contenedorTotal">
-                    <div id="total">
-                        <span>PRECIO TOTAL: ${{precioTotal}}</span>
-                        <form id="boton-checkout"></form>
-                    </div>
-                </div>
-            </div>
         </div> 
     </div>
+

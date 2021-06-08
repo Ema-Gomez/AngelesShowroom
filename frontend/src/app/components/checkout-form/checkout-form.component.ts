@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { iShipsments, iPayer, iItemMp } from './../../models/preference.model';
 import { ProvinciasService } from './../../services/provincias.service';
 import { MpServiceService } from './../../services/mp-service.service';
@@ -10,16 +10,15 @@ import { iItem } from './../../models/productos.model';
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css']
 })
-
 export class CheckoutFormComponent implements OnInit {
-  
+  @Output()
+  stringPref:EventEmitter<string> = new EventEmitter<string>(true);
   itemsCarrito: Array<iItem>;
   itemsTotales:number = 0;
   precioTotal:number = 0;
   orden:any;
   provincias:any;
   localidades:any;
-  preferenceId:string;
   
   item:iItemMp = {
     id:"",
@@ -47,7 +46,7 @@ export class CheckoutFormComponent implements OnInit {
     address:{
         zip_code:"",
         street_name:"",
-        street_number:0,
+        street_number:"",
     }
   };
   
@@ -62,7 +61,6 @@ export class CheckoutFormComponent implements OnInit {
       apartment:""
     } 
   };
-
   constructor(private carritoService: CarritoService, private provinciasServices:ProvinciasService, private mpService:MpServiceService) { 
   }
 
@@ -77,9 +75,6 @@ export class CheckoutFormComponent implements OnInit {
       }
     })
   }
-
-  
-
   async crearPreferencia(){
     this.items = []
     for(let i=0;i<this.itemsCarrito.length;i++){   
@@ -94,16 +89,32 @@ export class CheckoutFormComponent implements OnInit {
       }
       this.items.push(item)
     }
+
+    let numberPhone = parseInt(this.payer.phone.number)
+    this.payer.phone.number = numberPhone;
+    let streetNumber = parseInt(this.payer.address.street_number)
+    this.payer.address.street_number = streetNumber
+    this.shipsments.receiver_address.zip_code = this.payer.address.zip_code;
+    this.shipsments.receiver_address.street_name = this.payer.address.street_name;
+    this.shipsments.receiver_address.street_number = this.payer.address.street_number;
+
     const preference = {
       items: this.items,
       payer: this.payer,
-      shipsments: this.shipsments
+      shipments: this.shipsments
     }
     console.log(preference)
-    this.orden = await this.mpService.nuevaOrden(preference);
-    let {preferenceId} = this.orden
-    this.preferenceId = preferenceId
+    
+    let orden:any = await this.mpService.nuevaOrden(preference);
+    console.log(orden);
+    let {preferenceId} = orden;
+    this.stringPref.emit(preferenceId)
   }
+  mandarPref(){
+    let preferenceId = "akasdkj8whd8w0"
+    this.stringPref.emit(preferenceId)
+  }
+
 
   async obtenerProvincias(){
     (await this.provinciasServices.obtenerProvincias()).subscribe((res:any) => {
@@ -120,4 +131,5 @@ export class CheckoutFormComponent implements OnInit {
       this.localidades = data.localidades
     })
   }
+
 }

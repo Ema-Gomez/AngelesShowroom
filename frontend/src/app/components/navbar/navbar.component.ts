@@ -15,7 +15,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class NavbarComponent implements OnInit{
 
   mostrar:boolean = true
-  baseUrl = ["/login", "/admin","/registro","/admin/inicio","/admin/productos","/checkout"]
+  baseUrl = ["/login", "/admin","/registro","/admin/inicio","/admin/productos","/checkout", "/checkout/finalizar"]
   activeUrl: any;
   claseNav:string;
   claseFondo:String;
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit{
       .subscribe(() => {
           this.activeUrl = this.router.routerState.snapshot.url;
           this.ocultar(this.activeUrl);
-          console.log(this.activeUrl)
+
         })
     }
 

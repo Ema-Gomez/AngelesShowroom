@@ -14,6 +14,7 @@ export class ProductosTodosComponent implements OnInit {
   producto:iProductos;
   nombreCategoria:string;
   productoId:number;
+
  
   constructor(private service: ProductosService, private carritoService:CarritoService) {
 
@@ -25,6 +26,11 @@ export class ProductosTodosComponent implements OnInit {
 
   async obtenerProductos() {                
     const productos:any = await this.service.obtenerProductos("productos/todos");
+    productos.idCategorias;
+    for(let producto of productos){
+      let categoria = producto.idCategorias.toString();
+      producto.idCategorias = categoria
+    }
     this.productos = productos
     console.log(this.productos);
     return this.productos
@@ -32,7 +38,6 @@ export class ProductosTodosComponent implements OnInit {
 
   agregarProducto(producto:iItem){
     this.carritoService.agregarAlCarrito(producto) 
-    console.log(producto)
   }
   
 }

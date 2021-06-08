@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
       .subscribe(() => {
           this.activeUrl = this.router.routerState.snapshot.url;
           this.ocultar(this.activeUrl);
-          console.log(this.activeUrl)
         })
     }
   }

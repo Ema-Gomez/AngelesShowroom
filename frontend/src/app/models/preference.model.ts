@@ -4,16 +4,16 @@ export interface iPayer {
         email:string,
         phone: {
             area_code:string,
-            number:string,
+            number:any,
         }
         identification:{
             type:string, 
-            number:string
+            number:any,
         },
         address:{
             zip_code:string,
             street_name:string,
-            street_number:number
+            street_number:any
         }
 }
 

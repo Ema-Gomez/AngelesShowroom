@@ -5,9 +5,8 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class MpServiceService extends BaseService{
-  
   async nuevaOrden(preference){
-   return this.post("pagos/nuevo", preference );
+    return await this.post("pagos/nuevo", preference )
+   
   }
-
 }

@@ -1,1 +1,2 @@
-<router-outlet></router-outlet>
+<app-checkout-form (stringPref)="preferenceId1 = $event"></app-checkout-form>
+<app-checkout-pago [preferenceId]= "preferenceId1"></app-checkout-pago>

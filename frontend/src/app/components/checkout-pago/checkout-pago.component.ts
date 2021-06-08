@@ -1,5 +1,5 @@
-import { CheckoutFormComponent } from './../checkout-form/checkout-form.component';
-import { Component, OnInit } from '@angular/core';
+import { MpServiceService } from './../../services/mp-service.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-checkout-pago',
@@ -7,22 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout-pago.component.css']
 })
 export class CheckoutPagoComponent implements OnInit {
+  @Input()
   preferenceId:string;
 
-  constructor(private form:CheckoutFormComponent){
+  constructor(private mpService:MpServiceService){
+  }
+  ngOnChanges(){
+    console.log("hubo un cambio")
+    this.nuevoPago(this.preferenceId)
+  }
+  ngOnInit() {
   }
 
-  async ngOnInit() {
-    this.form.preferenceId = this.preferenceId
-    this.nuevoPago();
-  }
-
-  async nuevoPago(){
+  nuevoPago(preferenceId){
+    if(preferenceId){
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-      script.dataset.preferenceId = this.preferenceId;
+      script.dataset.preferenceId = preferenceId;
       let form = document.getElementById("boton-checkout")
       form.appendChild(script);
     }
+  }
 }

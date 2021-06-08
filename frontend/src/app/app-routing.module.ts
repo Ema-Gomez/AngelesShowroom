@@ -1,5 +1,6 @@
-import { CheckoutPagoComponent } from './components/checkout-pago/checkout-pago.component';
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
+import { ProductosService } from 'src/app/services/productos.service';
+import { CheckoutPagoComponent } from './components/checkout-pago/checkout-pago.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductosTodosComponent } from './components/productos-todos/productos-todos.component';
 import { ProductoComponent } from './components/producto/producto.component';
@@ -43,8 +44,8 @@ const routes: Routes = [
   {path: "", redirectTo:"inicio", pathMatch: 'full'},
   {path:"checkout", component: CheckoutComponent,
     children: [
-      {path: 'datos_pago', component:CheckoutFormComponent},
-      {path: 'finalizar', component:CheckoutPagoComponent}
+      {path: 'finalizar_pago', component:CheckoutPagoComponent},
+      {path: 'datos_pago', component: CheckoutFormComponent}
     ]
   }
 ];

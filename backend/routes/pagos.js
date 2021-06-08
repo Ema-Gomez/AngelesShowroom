@@ -10,15 +10,15 @@ const nuevoPago = async (req, res) => {
 	try{
         let {items} = req.body;
 		let {payer} = req.body;
-		let {shipsments} = req.body;
+		let {shipments} = req.body;
 		
 		console.log("items:",items)
         let preference = {
 	    	items,
 	    	payer,
-	    	shipsments,
+	    	shipments,
 	    	back_urls: {
-	    		"success": "http://localhost:8080/feedback",
+	    		"success": "http://localhost:4200/inicio",
 	    		"failure": "http://localhost:8080/feedback",
 	    		"pending": "http://localhost:8080/feedback"
 	    	},
@@ -26,8 +26,9 @@ const nuevoPago = async (req, res) => {
 	    };
         mercadopago.preferences.create(preference)
         .then(function(response){
-            console.log(response.body.id);
-            res.json({preferenceId: response.body.id})
+            console.log(response.body);
+			let preferenceId = response.body.id
+            res.json({preferenceId})
         }).catch(function(error){
             console.log(error);
         });
